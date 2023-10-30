@@ -8,9 +8,15 @@
 
 import Foundation
 
+public enum Country: String {
+    case USA = "US"
+}
+
 public final class CorrilySDK {
 
     public static func start(apiKey: String) {
+    }
 
+    public static func requestPaywall(userID: String, country: Country, experimentID: Int? = nil) {
     }
 }
