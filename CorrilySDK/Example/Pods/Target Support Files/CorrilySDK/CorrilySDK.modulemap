@@ -1,0 +1,6 @@
+framework module CorrilySDK {
+  umbrella header "CorrilySDK-umbrella.h"
+
+  export *
+  module * { export * }
+}

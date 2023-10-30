@@ -1,0 +1,18 @@
+{
+  "name": "CorrilySDK",
+  "version": "0.1.0",
+  "summary": "A short description of CorrilySDK.",
+  "description": "TODO: Add long description of the pod here.",
+  "homepage": "https://github.com/corrily/ios-sdk",
+  "authors": {
+    "Andrey Filipenkov": "kambaladecapitator@gmail.com"
+  },
+  "source": {
+    "git": "https://github.com/corrily/ios-sdk.git",
+    "tag": "0.1.0"
+  },
+  "platforms": {
+    "ios": "11.0"
+  },
+  "source_files": "CorrilySDK/Classes/**/*"
+}
