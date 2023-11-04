@@ -8,7 +8,43 @@
 
 import Foundation
 
-class CorillyAPI {
+struct Paywall {
+    struct Request: Encodable {
+        let apiID: String
+        let userID: String
+        let country: String?
+        let experimentID: Int?
+    }
+
+    struct Response: Decodable {
+        let success: Bool
+        let products: [Product]
+
+        struct Product: Decodable {
+            let id: Int
+            let name: String
+            let interval: Interval
+            let intervalCount: Int
+            let apiId: String
+            let price: String
+
+            enum Interval: String, Decodable {
+                case month
+                case year
+            }
+        }
+    }
+}
+
+public struct PaywallProduct {
+    let appStoreConnectID: String
+    let corrilyID: Int
+    let name: String
+    let intervalCount: Int
+    let price: String
+}
+
+final class CorillyAPI {
 
 	static let shared = CorillyAPI()
 	private init() {}
@@ -21,20 +57,12 @@ class CorillyAPI {
 		return config
 	}())
 
-	func call(endpoint: String, payload: Data, completion: @escaping (Data?) -> Void) {
+	func call(endpoint: String, payload: Data, completion: @escaping (Data?, Error?) -> Void) {
 		var request = URLRequest(url: .init(string: "https://default.corrily.com/mainapi/v1/\(endpoint)")!)
 		request.httpMethod = "POST"
 		request.httpBody = payload
 		self.urlSession.dataTask(with: request) { data, _, error in
-			defer {
-				completion(data)
-			}
-
-			guard let data = data else {
-				print("request error:", error)
-				return
-			}
-			print("raw response:", String(data: data, encoding: .utf8))
+            completion(data, error)
 		}.resume()
 	}
 }
