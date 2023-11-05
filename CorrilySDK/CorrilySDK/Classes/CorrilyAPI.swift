@@ -38,12 +38,12 @@ struct Paywall {
 }
 
 public struct PaywallProduct {
-    let appStoreConnectID: String
-    let corrilyID: Int
-    let name: String
-    let intervalCount: Int
-    let price: String
-    let priceUSD: String
+    public let appStoreConnectID: String
+    public let corrilyID: Int
+    public let name: String
+    public let intervalCount: Int
+    public let price: String
+    public let priceUSD: String
 }
 
 struct ChargeRequest: Encodable {
