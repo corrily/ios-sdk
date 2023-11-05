@@ -1,5 +1,5 @@
 //
-//  CorillyAPI.swift
+//  CorrilyAPI.swift
 //  CorrilySDK
 //
 //  Created by Andrey Filipenkov on 30.10.2023.
@@ -27,6 +27,7 @@ struct Paywall {
             let intervalCount: Int
             let apiId: String
             let price: String
+            let priceUsd: String
 
             enum Interval: String, Decodable {
                 case month
@@ -42,20 +43,22 @@ public struct PaywallProduct {
     let name: String
     let intervalCount: Int
     let price: String
+    let priceUSD: String
 }
 
-final class CorillyAPI {
+final class CorrilyAPI {
 
-	static let shared = CorillyAPI()
-	private init() {}
+    private let urlSession: URLSession
 
-	private let urlSession = URLSession(configuration: {
-		var config = URLSessionConfiguration.default
-		config.httpAdditionalHeaders = [
-			"Content-Type": "application/json",
-		]
-		return config
-	}())
+	init(apiID: String) {
+        let config = URLSessionConfiguration.default
+        config.httpAdditionalHeaders = [
+            "Content-Type": "application/json",
+            "x-api-key": apiID,
+        ]
+
+        urlSession = URLSession(configuration: config)
+    }
 
 	func call(endpoint: String, payload: Data, completion: @escaping (Data?, Error?) -> Void) {
 		var request = URLRequest(url: .init(string: "https://default.corrily.com/mainapi/v1/\(endpoint)")!)

@@ -13,7 +13,7 @@ public final class CorrilySDK {
     static let shared = CorrilySDK()
     private init() {}
 
-    private var apiID: String?
+    private var apiClient: CorrilyAPI!
 }
 
 public extension CorrilySDK {
@@ -24,19 +24,19 @@ public extension CorrilySDK {
         shared.start(apiID: apiID)
     }
 
-    static func requestPaywall(userID: String?, country: Country, experimentID: Int? = nil, completion: @escaping (PaywallResponse?, Error?) -> Void) {
-        shared.requestPaywall(userID: userID, country: country, experimentID: experimentID, completion: completion)
+    static func requestPaywall(paywallApiID: String, userID: String?, country: Country, experimentID: Int? = nil, completion: @escaping (PaywallResponse?, Error?) -> Void) {
+        shared.requestPaywall(paywallApiID: paywallApiID, userID: userID, country: country, experimentID: experimentID, completion: completion)
     }
 }
 
 private extension CorrilySDK {
 
     func start(apiID: String) {
-        self.apiID = apiID
+        apiClient = .init(apiID: apiID)
     }
 
-    func requestPaywall(userID: String?, country: Country, experimentID: Int?, completion: @escaping (PaywallResponse?, Error?) -> Void) {
-        guard let apiID else {
+    func requestPaywall(paywallApiID: String, userID: String?, country: Country, experimentID: Int?, completion: @escaping (PaywallResponse?, Error?) -> Void) {
+        guard let apiClient else {
             completion(nil, nil)
             return
         }
@@ -44,8 +44,8 @@ private extension CorrilySDK {
         let jsonEncoder = JSONEncoder()
         jsonEncoder.keyEncodingStrategy = .convertToSnakeCase
         guard let payload = try? jsonEncoder.encode(Paywall.Request(
-            apiID: apiID,
-            userID: UserID.userID,
+            apiID: paywallApiID,
+            userID: userID ?? UserID.userID,
             country: country.rawValue,
             experimentID: experimentID
         )) else {
@@ -53,7 +53,7 @@ private extension CorrilySDK {
             return
         }
 
-        CorillyAPI.shared.call(endpoint: "paywall", payload: payload) {
+        apiClient.call(endpoint: "paywall", payload: payload) {
             guard let data = $0 else {
                 completion(nil, $1)
                 return
@@ -81,7 +81,8 @@ private extension CorrilySDK {
                     corrilyID: $0.id,
                     name: $0.name,
                     intervalCount: $0.intervalCount,
-                    price: $0.price
+                    price: $0.price,
+                    priceUSD: $0.priceUsd
                 )
                 switch $0.interval {
                 case .month:
