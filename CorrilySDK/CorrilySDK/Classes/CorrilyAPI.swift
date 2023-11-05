@@ -46,6 +46,18 @@ public struct PaywallProduct {
     let priceUSD: String
 }
 
+struct ChargeRequest: Encodable {
+    let amount: Double
+    let created: Date
+    let currency: String
+    let country: String
+    let origin: String
+    let originID: String
+    let product: String
+    let status: String
+    let userID: String
+}
+
 final class CorrilyAPI {
 
     private let urlSession: URLSession
