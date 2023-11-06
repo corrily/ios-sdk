@@ -9,72 +9,73 @@
 /* Begin PBXBuildFile section */
 		0DEC6759017B938B16D2BAADCF380D05 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73010CC983E3809BECEE5348DA1BB8C6 /* Foundation.framework */; };
 		14479B026E85E924EDAA7D6C55ADB451 /* Pods-CorrilySDK_Example-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 0CDFCCA3C406D02856E92BEADC0375E5 /* Pods-CorrilySDK_Example-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		2277F0A8C5BA57B4E1182A0499B3A880 /* CorrilySDK.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6040FFF30C3885C431C98EB18282CF7 /* CorrilySDK.swift */; };
+		2277F0A8C5BA57B4E1182A0499B3A880 /* CorrilySDK.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2D00A24DB3D7A2BFFC6C525BD544C0B /* CorrilySDK.swift */; };
 		23B20A04DB1B42B8E59F3FC58BDDF020 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73010CC983E3809BECEE5348DA1BB8C6 /* Foundation.framework */; };
 		359A3187441968FC50CC32BE942D75AF /* Pods-CorrilySDK_Tests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 7E4C03F627F4C2F27191809130CB99BC /* Pods-CorrilySDK_Tests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		45F1198475B4401081602F8B245E9849 /* Pods-CorrilySDK_Example-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = CE58351F1935A23E7AF782A8878C0EF7 /* Pods-CorrilySDK_Example-dummy.m */; };
-		48913E0BDA2C42C1424F3B240439FA70 /* CorrilySDK-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 892D05DE3406A307CC5ABB0797F170C5 /* CorrilySDK-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		530849DC804D6D0BC94AEAE2073543B4 /* CorrilyAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CE34168E2A7AA4B1B89FD078C38E3D5 /* CorrilyAPI.swift */; };
-		582C03D224A969040F3589627D09BE23 /* UserID.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78C9FCB6DF1F8D3A48D4906BACA7539C /* UserID.swift */; };
+		48913E0BDA2C42C1424F3B240439FA70 /* CorrilySDK-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 8D2512FD5902FB1FA958680329C959AD /* CorrilySDK-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		530849DC804D6D0BC94AEAE2073543B4 /* CorrilyAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1EBB750E32A911EB6D646EF4910644B /* CorrilyAPI.swift */; };
+		582C03D224A969040F3589627D09BE23 /* UserID.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64EBC0F6EC3332236F64C26A3F071D17 /* UserID.swift */; };
 		7EF2A584CC94F320E143E532C96A0FE6 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73010CC983E3809BECEE5348DA1BB8C6 /* Foundation.framework */; };
 		931B18206A226C80790E556EB93656E5 /* Pods-CorrilySDK_Tests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 22E48A5C12F3A507715F1779874D4126 /* Pods-CorrilySDK_Tests-dummy.m */; };
-		B5AF7C5262EB72614701F3E7C6962742 /* CorrilySDK-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = B4F5FD8DA5569C9CFC7FF7A077FBCE75 /* CorrilySDK-dummy.m */; };
-		EB830FCB2DD936D1C15283ECF413D11B /* Country.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F6880B7C15421F92347F25171512623 /* Country.swift */; };
-		F8588ADEDEFF1E4D035DF3D455A6D26A /* UserDefaults+SDK.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06D4CA201E1FBB2B6C5C2AC6013B966D /* UserDefaults+SDK.swift */; };
+		B5AF7C5262EB72614701F3E7C6962742 /* CorrilySDK-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = D841FE3F1A5D61FCA88FD4E89333E40E /* CorrilySDK-dummy.m */; };
+		EB830FCB2DD936D1C15283ECF413D11B /* Country.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7E77A1726AB71FDD6E92C35497D14F3 /* Country.swift */; };
+		F8588ADEDEFF1E4D035DF3D455A6D26A /* UserDefaults+SDK.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC9DB8B57F95803568557E86A6AF0282 /* UserDefaults+SDK.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		8D50BF0A7B0DB11AB3B5A6AB8666D24E /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 1A184CD76CF50863DBAFB3D0D491BE14;
-			remoteInfo = "Pods-CorrilySDK_Example";
-		};
-		AB03FDB357427C05349F0E3D27A8F5AC /* PBXContainerItemProxy */ = {
+		121C9AEDEC33626974DEA31A8368EEF2 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = E0ACC9B09DB86EA6875F2CD2A8E044A1;
 			remoteInfo = CorrilySDK;
 		};
+		6921235A1AC9B31313F5FF077274451A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 1A184CD76CF50863DBAFB3D0D491BE14;
+			remoteInfo = "Pods-CorrilySDK_Example";
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		06443FACC0EAD1B1AA582B0D3DDDEFE1 /* Pods-CorrilySDK_Tests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-CorrilySDK_Tests-acknowledgements.markdown"; sourceTree = "<group>"; };
-		06D4CA201E1FBB2B6C5C2AC6013B966D /* UserDefaults+SDK.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "UserDefaults+SDK.swift"; path = "CorrilySDK/Classes/UserDefaults+SDK.swift"; sourceTree = "<group>"; };
-		0732FAB029DAB9A20EA3FB3AE7564AB2 /* CorrilySDK.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = CorrilySDK.release.xcconfig; sourceTree = "<group>"; };
 		0CDFCCA3C406D02856E92BEADC0375E5 /* Pods-CorrilySDK_Example-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-CorrilySDK_Example-umbrella.h"; sourceTree = "<group>"; };
 		16B30A95BE5226B87584CA2A3B5043B3 /* Pods-CorrilySDK_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-CorrilySDK_Tests.release.xcconfig"; sourceTree = "<group>"; };
-		1D21A06D341C045EFD5A39CD227260FC /* CorrilySDK.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = CorrilySDK.debug.xcconfig; sourceTree = "<group>"; };
 		220DA87BA02F8E9D5D745261E582CCE3 /* Pods-CorrilySDK_Example.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-CorrilySDK_Example.modulemap"; sourceTree = "<group>"; };
 		22E48A5C12F3A507715F1779874D4126 /* Pods-CorrilySDK_Tests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-CorrilySDK_Tests-dummy.m"; sourceTree = "<group>"; };
 		23A0EAE4F0C9A466A38745A2F549C98B /* Pods-CorrilySDK_Tests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-CorrilySDK_Tests.modulemap"; sourceTree = "<group>"; };
 		2CFA18615244D925C5094ADC52B602DA /* Pods-CorrilySDK_Example-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-CorrilySDK_Example-frameworks.sh"; sourceTree = "<group>"; };
-		2F6880B7C15421F92347F25171512623 /* Country.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Country.swift; path = CorrilySDK/Classes/Country.swift; sourceTree = "<group>"; };
 		39C955BD2B2664C939B4A689B815C155 /* Pods-CorrilySDK_Tests-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-CorrilySDK_Tests-Info.plist"; sourceTree = "<group>"; };
 		43DC35E866DE23033DACDF07A25F3E35 /* Pods-CorrilySDK_Tests */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = "Pods-CorrilySDK_Tests"; path = Pods_CorrilySDK_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		482DAFC0EDCE5820269F995E7FD0BD02 /* CorrilySDK.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = CorrilySDK.modulemap; sourceTree = "<group>"; };
+		44D274568B2F6BB178256523096BC7B0 /* CorrilySDK.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = CorrilySDK.release.xcconfig; sourceTree = "<group>"; };
+		49B60B96D1E4AB6C09774199AC6B5752 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; path = README.md; sourceTree = "<group>"; };
 		4AA94DF7D49056DD7B404BA804DEA140 /* Pods-CorrilySDK_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-CorrilySDK_Example.release.xcconfig"; sourceTree = "<group>"; };
-		568115CA16CA275908A3422C09B04B8D /* CorrilySDK-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "CorrilySDK-prefix.pch"; sourceTree = "<group>"; };
-		5CE34168E2A7AA4B1B89FD078C38E3D5 /* CorrilyAPI.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CorrilyAPI.swift; path = CorrilySDK/Classes/CorrilyAPI.swift; sourceTree = "<group>"; };
+		64EBC0F6EC3332236F64C26A3F071D17 /* UserID.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = UserID.swift; path = CorrilySDK/Classes/UserID.swift; sourceTree = "<group>"; };
 		6B05A43B3B7C1BDCF9EB78BC7A6953BE /* CorrilySDK */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = CorrilySDK; path = CorrilySDK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6B13259EC6670C95FF3D82898B859124 /* Pods-CorrilySDK_Example */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = "Pods-CorrilySDK_Example"; path = Pods_CorrilySDK_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		73010CC983E3809BECEE5348DA1BB8C6 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS14.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
-		7851E0435DAB8C70096D48658D9D2015 /* CorrilySDK.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; path = CorrilySDK.podspec; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
-		78C9FCB6DF1F8D3A48D4906BACA7539C /* UserID.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = UserID.swift; path = CorrilySDK/Classes/UserID.swift; sourceTree = "<group>"; };
 		7B925DB4056E6157BBCDFBB846AC71FC /* Pods-CorrilySDK_Tests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-CorrilySDK_Tests-acknowledgements.plist"; sourceTree = "<group>"; };
 		7E4C03F627F4C2F27191809130CB99BC /* Pods-CorrilySDK_Tests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-CorrilySDK_Tests-umbrella.h"; sourceTree = "<group>"; };
-		892D05DE3406A307CC5ABB0797F170C5 /* CorrilySDK-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "CorrilySDK-umbrella.h"; sourceTree = "<group>"; };
+		8D2512FD5902FB1FA958680329C959AD /* CorrilySDK-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "CorrilySDK-umbrella.h"; sourceTree = "<group>"; };
 		918A5D9C2F2C696B5121D98AEC9B4942 /* Pods-CorrilySDK_Example-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-CorrilySDK_Example-Info.plist"; sourceTree = "<group>"; };
 		9834F500E9D90A622C81F2F8E231F55D /* Pods-CorrilySDK_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-CorrilySDK_Tests.debug.xcconfig"; sourceTree = "<group>"; };
+		9C9907E20AD1930F56543D305F593362 /* CorrilySDK.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = CorrilySDK.debug.xcconfig; sourceTree = "<group>"; };
 		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		A05052B2482D131DE098BA6612ACF6D5 /* CorrilySDK.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; path = CorrilySDK.podspec; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		A1433B57421E4504CE192261B82B4E5D /* Pods-CorrilySDK_Example-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-CorrilySDK_Example-acknowledgements.plist"; sourceTree = "<group>"; };
-		A6040FFF30C3885C431C98EB18282CF7 /* CorrilySDK.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CorrilySDK.swift; path = CorrilySDK/Classes/CorrilySDK.swift; sourceTree = "<group>"; };
-		B4F5FD8DA5569C9CFC7FF7A077FBCE75 /* CorrilySDK-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "CorrilySDK-dummy.m"; sourceTree = "<group>"; };
+		A17A23B1DCA45A6FEE43FDC3CD8AF5AA /* CorrilySDK-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "CorrilySDK-prefix.pch"; sourceTree = "<group>"; };
+		AC9DB8B57F95803568557E86A6AF0282 /* UserDefaults+SDK.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "UserDefaults+SDK.swift"; path = "CorrilySDK/Classes/UserDefaults+SDK.swift"; sourceTree = "<group>"; };
+		AFBBE6FFE7E03AD41CA4B6BDB64168A6 /* CorrilySDK.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = CorrilySDK.modulemap; sourceTree = "<group>"; };
+		C2D00A24DB3D7A2BFFC6C525BD544C0B /* CorrilySDK.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CorrilySDK.swift; path = CorrilySDK/Classes/CorrilySDK.swift; sourceTree = "<group>"; };
 		CE58351F1935A23E7AF782A8878C0EF7 /* Pods-CorrilySDK_Example-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-CorrilySDK_Example-dummy.m"; sourceTree = "<group>"; };
+		D1EBB750E32A911EB6D646EF4910644B /* CorrilyAPI.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CorrilyAPI.swift; path = CorrilySDK/Classes/CorrilyAPI.swift; sourceTree = "<group>"; };
+		D5748972F352E4F222CFFA05E53C3308 /* CorrilySDK-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "CorrilySDK-Info.plist"; sourceTree = "<group>"; };
+		D841FE3F1A5D61FCA88FD4E89333E40E /* CorrilySDK-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "CorrilySDK-dummy.m"; sourceTree = "<group>"; };
 		EFCA6FEFF48CF80037F658F24B4C0692 /* Pods-CorrilySDK_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-CorrilySDK_Example.debug.xcconfig"; sourceTree = "<group>"; };
-		EFF5969275BDBEA8EECC0AE09EE18648 /* CorrilySDK-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "CorrilySDK-Info.plist"; sourceTree = "<group>"; };
+		F7E77A1726AB71FDD6E92C35497D14F3 /* Country.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Country.swift; path = CorrilySDK/Classes/Country.swift; sourceTree = "<group>"; };
 		FBEC9CA393D8C58EA1C79D986A5E7446 /* Pods-CorrilySDK_Example-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-CorrilySDK_Example-acknowledgements.markdown"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -106,12 +107,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		0F52405DB1E152ACD7ED82F1CB52059E /* Pod */ = {
+		13309BB5E71D018CC72F94D346842316 /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
-				7851E0435DAB8C70096D48658D9D2015 /* CorrilySDK.podspec */,
+				AFBBE6FFE7E03AD41CA4B6BDB64168A6 /* CorrilySDK.modulemap */,
+				D841FE3F1A5D61FCA88FD4E89333E40E /* CorrilySDK-dummy.m */,
+				D5748972F352E4F222CFFA05E53C3308 /* CorrilySDK-Info.plist */,
+				A17A23B1DCA45A6FEE43FDC3CD8AF5AA /* CorrilySDK-prefix.pch */,
+				8D2512FD5902FB1FA958680329C959AD /* CorrilySDK-umbrella.h */,
+				9C9907E20AD1930F56543D305F593362 /* CorrilySDK.debug.xcconfig */,
+				44D274568B2F6BB178256523096BC7B0 /* CorrilySDK.release.xcconfig */,
 			);
-			name = Pod;
+			name = "Support Files";
+			path = "Example/Pods/Target Support Files/CorrilySDK";
 			sourceTree = "<group>";
 		};
 		2D0397D022B3413DD052B0DFE894D58F /* Pods-CorrilySDK_Example */ = {
@@ -131,21 +139,6 @@
 			path = "Target Support Files/Pods-CorrilySDK_Example";
 			sourceTree = "<group>";
 		};
-		402A54E4A1CDDC3C462CEFAB5557ECCD /* CorrilySDK */ = {
-			isa = PBXGroup;
-			children = (
-				5CE34168E2A7AA4B1B89FD078C38E3D5 /* CorrilyAPI.swift */,
-				A6040FFF30C3885C431C98EB18282CF7 /* CorrilySDK.swift */,
-				2F6880B7C15421F92347F25171512623 /* Country.swift */,
-				06D4CA201E1FBB2B6C5C2AC6013B966D /* UserDefaults+SDK.swift */,
-				78C9FCB6DF1F8D3A48D4906BACA7539C /* UserID.swift */,
-				0F52405DB1E152ACD7ED82F1CB52059E /* Pod */,
-				E0488A4236B5F1FF3A30DD59DCE2E6A4 /* Support Files */,
-			);
-			name = CorrilySDK;
-			path = ../..;
-			sourceTree = "<group>";
-		};
 		4686C5029FF88000058D8EA47F2C5215 /* Pods-CorrilySDK_Tests */ = {
 			isa = PBXGroup;
 			children = (
@@ -160,6 +153,15 @@
 			);
 			name = "Pods-CorrilySDK_Tests";
 			path = "Target Support Files/Pods-CorrilySDK_Tests";
+			sourceTree = "<group>";
+		};
+		50A93FE4C02D433C76FC8D0F646D3116 /* Pod */ = {
+			isa = PBXGroup;
+			children = (
+				A05052B2482D131DE098BA6612ACF6D5 /* CorrilySDK.podspec */,
+				49B60B96D1E4AB6C09774199AC6B5752 /* README.md */,
+			);
+			name = Pod;
 			sourceTree = "<group>";
 		};
 		54A012A1A9844EB484DA87EA9D101F04 /* Targets Support Files */ = {
@@ -179,10 +181,25 @@
 			name = iOS;
 			sourceTree = "<group>";
 		};
+		82FE77E798C59757F904A3035C108DF7 /* CorrilySDK */ = {
+			isa = PBXGroup;
+			children = (
+				D1EBB750E32A911EB6D646EF4910644B /* CorrilyAPI.swift */,
+				C2D00A24DB3D7A2BFFC6C525BD544C0B /* CorrilySDK.swift */,
+				F7E77A1726AB71FDD6E92C35497D14F3 /* Country.swift */,
+				AC9DB8B57F95803568557E86A6AF0282 /* UserDefaults+SDK.swift */,
+				64EBC0F6EC3332236F64C26A3F071D17 /* UserID.swift */,
+				50A93FE4C02D433C76FC8D0F646D3116 /* Pod */,
+				13309BB5E71D018CC72F94D346842316 /* Support Files */,
+			);
+			name = CorrilySDK;
+			path = ../..;
+			sourceTree = "<group>";
+		};
 		BF9B53AF1AAD4181CF52549132B96626 /* Development Pods */ = {
 			isa = PBXGroup;
 			children = (
-				402A54E4A1CDDC3C462CEFAB5557ECCD /* CorrilySDK */,
+				82FE77E798C59757F904A3035C108DF7 /* CorrilySDK */,
 			);
 			name = "Development Pods";
 			sourceTree = "<group>";
@@ -204,21 +221,6 @@
 				578452D2E740E91742655AC8F1636D1F /* iOS */,
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		E0488A4236B5F1FF3A30DD59DCE2E6A4 /* Support Files */ = {
-			isa = PBXGroup;
-			children = (
-				482DAFC0EDCE5820269F995E7FD0BD02 /* CorrilySDK.modulemap */,
-				B4F5FD8DA5569C9CFC7FF7A077FBCE75 /* CorrilySDK-dummy.m */,
-				EFF5969275BDBEA8EECC0AE09EE18648 /* CorrilySDK-Info.plist */,
-				568115CA16CA275908A3422C09B04B8D /* CorrilySDK-prefix.pch */,
-				892D05DE3406A307CC5ABB0797F170C5 /* CorrilySDK-umbrella.h */,
-				1D21A06D341C045EFD5A39CD227260FC /* CorrilySDK.debug.xcconfig */,
-				0732FAB029DAB9A20EA3FB3AE7564AB2 /* CorrilySDK.release.xcconfig */,
-			);
-			name = "Support Files";
-			path = "Example/Pods/Target Support Files/CorrilySDK";
 			sourceTree = "<group>";
 		};
 		E43E1317CC629766F3F4644A98DB635A /* Products */ = {
@@ -273,7 +275,7 @@
 			buildRules = (
 			);
 			dependencies = (
-				841F183381599D988FB587904FD29C9E /* PBXTargetDependency */,
+				B7B36ACCC25E129354AEF79FBCB29757 /* PBXTargetDependency */,
 			);
 			name = "Pods-CorrilySDK_Tests";
 			productName = Pods_CorrilySDK_Tests;
@@ -292,7 +294,7 @@
 			buildRules = (
 			);
 			dependencies = (
-				079883174CD8ADB5C06F1C8B2200B612 /* PBXTargetDependency */,
+				220264054C5B8CA29A287CE29870B54E /* PBXTargetDependency */,
 			);
 			name = "Pods-CorrilySDK_Example";
 			productName = Pods_CorrilySDK_Example;
@@ -403,17 +405,17 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		079883174CD8ADB5C06F1C8B2200B612 /* PBXTargetDependency */ = {
+		220264054C5B8CA29A287CE29870B54E /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = CorrilySDK;
 			target = E0ACC9B09DB86EA6875F2CD2A8E044A1 /* CorrilySDK */;
-			targetProxy = AB03FDB357427C05349F0E3D27A8F5AC /* PBXContainerItemProxy */;
+			targetProxy = 121C9AEDEC33626974DEA31A8368EEF2 /* PBXContainerItemProxy */;
 		};
-		841F183381599D988FB587904FD29C9E /* PBXTargetDependency */ = {
+		B7B36ACCC25E129354AEF79FBCB29757 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = "Pods-CorrilySDK_Example";
 			target = 1A184CD76CF50863DBAFB3D0D491BE14 /* Pods-CorrilySDK_Example */;
-			targetProxy = 8D50BF0A7B0DB11AB3B5A6AB8666D24E /* PBXContainerItemProxy */;
+			targetProxy = 6921235A1AC9B31313F5FF077274451A /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -489,7 +491,7 @@
 		};
 		7B6FAF971F003F260243B23306BA54BD /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 1D21A06D341C045EFD5A39CD227260FC /* CorrilySDK.debug.xcconfig */;
+			baseConfigurationReference = 9C9907E20AD1930F56543D305F593362 /* CorrilySDK.debug.xcconfig */;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				CLANG_ENABLE_OBJC_WEAK = NO;
@@ -683,7 +685,7 @@
 		};
 		D9ED3DFF7B662B29DCC733DC9CC86EA9 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 0732FAB029DAB9A20EA3FB3AE7564AB2 /* CorrilySDK.release.xcconfig */;
+			baseConfigurationReference = 44D274568B2F6BB178256523096BC7B0 /* CorrilySDK.release.xcconfig */;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				CLANG_ENABLE_OBJC_WEAK = NO;
