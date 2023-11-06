@@ -14,7 +14,7 @@ public final class CorrilySDK {
     static let shared = CorrilySDK()
     private init() {}
 
-    private var apiClient: CorrilyAPI!
+    private var apiClient: CorrilyAPI?
 }
 
 public extension CorrilySDK {
@@ -25,8 +25,8 @@ public extension CorrilySDK {
         shared.start(apiID: apiID)
     }
 
-    static func requestPaywall(paywallApiID: String, userID: String?, country: Country, experimentID: Int? = nil, completion: @escaping (PaywallResponse?, Error?) -> Void) {
-        shared.requestPaywall(paywallApiID: paywallApiID, userID: userID, country: country, experimentID: experimentID, completion: completion)
+    static func requestPaywall(paywallApiID: String, userID: String?, country: Country, isDev: Bool, experimentID: Int? = nil, completion: @escaping (PaywallResponse?, Error?) -> Void) {
+        shared.requestPaywall(paywallApiID: paywallApiID, userID: userID, country: country, isDev: isDev, experimentID: experimentID, completion: completion)
     }
 
     static func requestCharge(transaction: SKPaymentTransaction, product: SKProduct, paywallProduct: PaywallProduct, userID: String?, country: Country) {
@@ -40,7 +40,7 @@ private extension CorrilySDK {
         apiClient = .init(apiID: apiID)
     }
 
-    func requestPaywall(paywallApiID: String, userID: String?, country: Country, experimentID: Int?, completion: @escaping (PaywallResponse?, Error?) -> Void) {
+    func requestPaywall(paywallApiID: String, userID: String?, country: Country, isDev: Bool, experimentID: Int?, completion: @escaping (PaywallResponse?, Error?) -> Void) {
         guard let apiClient else {
             completion(nil, nil)
             return
@@ -52,6 +52,7 @@ private extension CorrilySDK {
             apiID: paywallApiID,
             userID: userID ?? UserID.userID,
             country: country.rawValue,
+            dev: isDev,
             experimentID: experimentID
         )) else {
             completion(nil, nil)

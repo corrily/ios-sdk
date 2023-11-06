@@ -12,7 +12,8 @@ struct Paywall {
     struct Request: Encodable {
         let apiID: String
         let userID: String
-        let country: String?
+        let country: String
+        let dev: Bool
         let experimentID: Int?
     }
 
