@@ -1,16 +1,22 @@
 Pod::Spec.new do |s|
   s.name             = 'CorrilySDK'
   s.version          = '0.1.0'
-  s.summary          = 'A short description of CorrilySDK.'
+  s.summary          = 'Swift SDK to fetch Corrily prices for in-app Paywall.'
 
   s.description      = <<-DESC
-TODO: Add long description of the pod here.
+Swift SDK to fetch Corrily prices for in-app Paywall.
                        DESC
 
   s.homepage         = 'https://github.com/corrily/ios-sdk'
-  # s.license          = { :type => 'MIT', :file => 'LICENSE' }
-  s.author           = { 'Andrey Filipenkov' => 'kambaladecapitator@gmail.com' }
-  s.source           = { :git => 'https://github.com/corrily/ios-sdk.git', :tag => s.version.to_s }
+  s.license          = { :type => 'MIT', :file => 'LICENSE' }
+  s.author           = {
+    'Andrey Filipenkov' => 'kambaladecapitator@gmail.com',
+    'Kirill Gugaev' => 'kirill@corrily.com'
+  }
+  s.source           = {
+    :git => 'https://github.com/corrily/ios-sdk.git',
+    :tag => s.version.to_s
+  }
 
   s.ios.deployment_target = '11.0'
 
