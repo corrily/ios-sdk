@@ -14,7 +14,7 @@ TODO: Add long description of the pod here.
 
   s.ios.deployment_target = '11.0'
 
-  s.source_files = 'CorrilySDK/Classes/**/*'
+  s.source_files = 'Sources/CorrilySDK/Classes/**/*'
   
   # s.resource_bundles = {
   #   'CorrilySDK' => ['CorrilySDK/Assets/*.png']
