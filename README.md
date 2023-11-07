@@ -41,11 +41,11 @@ func application(_ application: UIApplication, didFinishLaunchingWithOptions lau
 
 ```swift
 CorrilySDK.requestPaywall(paywallApiID: "your_API_ID", userID: nil, country: .UnitedStates, isDev: true) {
-	guard let response = $0 else {
-		print("error requesting paywall: \($1)")
-		return
-	}
-	// process response.monthlyProducts and response.yearlyProducts
+  guard let response = $0 else {
+    print("error requesting paywall: \($1)")
+    return
+  }
+  // process response.monthlyProducts and response.yearlyProducts
 }
 ```
 
@@ -58,13 +58,13 @@ func paymentQueue(_ queue: SKPaymentQueue, updatedTransactions transactions: [SK
   transactions.forEach {
     // here `product` is StoreKit product, probably the one that's being purchased at the moment
     // `corrilyProduct` is the corresponding Corrily product
-		CorrilySDK.requestCharge(
-			transaction: $0,
-			product: product,
-			paywallProduct: corrilyProduct,
-			userID: nil,
-			country: .UnitedStates
-		)
+    CorrilySDK.requestCharge(
+      transaction: $0,
+      product: product,
+      paywallProduct: corrilyProduct,
+      userID: nil,
+      country: .UnitedStates
+    )
     queue.finishTransaction($0)
   }
 }
