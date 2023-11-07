@@ -38,12 +38,19 @@ struct Paywall {
     }
 }
 
+/// Object representing Corrilly product
 public struct PaywallProduct {
+    /// Product ID in AppStoreConnect
     public let appStoreConnectID: String
+    /// Product ID in Corrily dashboard
     public let corrilyID: Int
+    /// Product name in Corrily dashboard
     public let name: String
+    /// Duration of this product, for example `2` in a monthly product means 2 months
     public let intervalCount: Int
+    /// Product price with currency symbol according to the provided country
     public let price: String
+    /// Product price with currency symbol in USD
     public let priceUSD: String
 }
 
@@ -63,11 +70,11 @@ final class CorrilyAPI {
 
     private let urlSession: URLSession
 
-	init(apiID: String) {
+	init(apiKey: String) {
         let config = URLSessionConfiguration.default
         config.httpAdditionalHeaders = [
             "Content-Type": "application/json",
-            "x-api-key": apiID,
+            "x-api-key": apiKey,
         ]
 
         urlSession = URLSession(configuration: config)

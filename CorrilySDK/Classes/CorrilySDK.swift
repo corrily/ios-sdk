@@ -21,14 +21,31 @@ public extension CorrilySDK {
 
     typealias PaywallResponse = (monthlyProducts: [PaywallProduct], yearlyProducts: [PaywallProduct])
 
-    static func start(apiID: String) {
-        shared.start(apiID: apiID)
+    /// SDK entry point
+    /// - Parameter apiKey: Your API key
+    static func start(apiKey: String) {
+        shared.start(apiKey: apiKey)
     }
 
+    /// Perform Paywall request to obtain list of products
+    /// - Parameters:
+    ///   - paywallApiID: Api ID from Corrily dashboard
+    ///   - userID: Some ID to identify current user. If `nil` is passed, SDK will try to use IDFA if available or an internally generated UUID.
+    ///   - country: User's country
+    ///   - isDev: Flag used for testing, set to `true`
+    ///   - experimentID: Experiment ID from Corrily dashboard
+    ///   - completion: Completion closure to receive results
     static func requestPaywall(paywallApiID: String, userID: String?, country: Country, isDev: Bool, experimentID: Int? = nil, completion: @escaping (PaywallResponse?, Error?) -> Void) {
         shared.requestPaywall(paywallApiID: paywallApiID, userID: userID, country: country, isDev: isDev, experimentID: experimentID, completion: completion)
     }
 
+    /// Perform Charge request to notify Corrily of a purchase action. https://docs.corrily.com/api-reference/create-charge
+    /// - Parameters:
+    ///   - transaction: Transaction object from StoreKit
+    ///   - product: Product object that is being purchased
+    ///   - paywallProduct: Corrily product returned from `requestPaywall`
+    ///   - userID: Same as in `requestPaywall`
+    ///   - country: Same as in `requestPaywall`
     static func requestCharge(transaction: SKPaymentTransaction, product: SKProduct, paywallProduct: PaywallProduct, userID: String?, country: Country) {
         shared.requestCharge(transaction: transaction, product: product, paywallProduct: paywallProduct, userID: userID, country: country)
     }
@@ -36,8 +53,8 @@ public extension CorrilySDK {
 
 private extension CorrilySDK {
 
-    func start(apiID: String) {
-        apiClient = .init(apiID: apiID)
+    func start(apiKey: String) {
+        apiClient = .init(apiKey: apiKey)
     }
 
     func requestPaywall(paywallApiID: String, userID: String?, country: Country, isDev: Bool, experimentID: Int?, completion: @escaping (PaywallResponse?, Error?) -> Void) {
