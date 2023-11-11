@@ -3,10 +3,6 @@ Pod::Spec.new do |s|
   s.version          = '0.1.0'
   s.summary          = 'Swift SDK to fetch Corrily prices for in-app Paywall.'
 
-  s.description      = <<-DESC
-Swift SDK to fetch Corrily prices for in-app Paywall.
-                       DESC
-
   s.homepage         = 'https://github.com/corrily/ios-sdk'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
   s.author           = {
