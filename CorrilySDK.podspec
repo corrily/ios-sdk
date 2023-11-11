@@ -19,6 +19,7 @@ Swift SDK to fetch Corrily prices for in-app Paywall.
   }
 
   s.ios.deployment_target = '11.0'
+  s.swift_version = '5.1'
 
   s.source_files = 'Sources/CorrilySDK/Classes/**/*'
 end
