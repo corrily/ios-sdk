@@ -17,7 +17,7 @@
 Example:
 
 ```ruby
-pod 'CorrilySDK', :git => 'https://github.com/corrily/ios-sdk.git', :tag => '1.0.0'
+pod 'CorrilySDK', '~> 1.0'
 ```
 
 ## Usage
