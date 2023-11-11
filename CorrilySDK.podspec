@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = 'CorrilySDK'
-  s.version          = '0.1.0'
+  s.version          = '1.0.0'
   s.summary          = 'Swift SDK to fetch Corrily prices for in-app Paywall.'
 
   s.homepage         = 'https://github.com/corrily/ios-sdk'
