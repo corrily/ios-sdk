@@ -68,13 +68,19 @@ struct ChargeRequest: Encodable {
 
 final class CorrilyAPI {
 
+    private static let apiKeyHeader = "x-api-key"
+
     private let urlSession: URLSession
+
+    var apiKey: String {
+        urlSession.configuration.httpAdditionalHeaders![CorrilyAPI.apiKeyHeader] as! String
+    }
 
 	init(apiKey: String) {
         let config = URLSessionConfiguration.default
         config.httpAdditionalHeaders = [
             "Content-Type": "application/json",
-            "x-api-key": apiKey,
+            CorrilyAPI.apiKeyHeader: apiKey,
         ]
 
         urlSession = URLSession(configuration: config)

@@ -29,14 +29,13 @@ public extension CorrilySDK {
 
     /// Perform Paywall request to obtain list of products
     /// - Parameters:
-    ///   - paywallApiID: Api ID from Corrily dashboard
     ///   - userID: Some ID to identify current user. If `nil` is passed, SDK will try to use IDFA if available or an internally generated UUID.
     ///   - country: User's country
     ///   - isDev: Flag used for testing, set to `true`
     ///   - experimentID: Experiment ID from Corrily dashboard
     ///   - completion: Completion closure to receive results
-    static func requestPaywall(paywallApiID: String, userID: String?, country: Country, isDev: Bool, experimentID: Int? = nil, completion: @escaping (PaywallResponse?, Error?) -> Void) {
-        shared.requestPaywall(paywallApiID: paywallApiID, userID: userID, country: country, isDev: isDev, experimentID: experimentID, completion: completion)
+    static func requestPaywall(userID: String?, country: Country, isDev: Bool, experimentID: Int? = nil, completion: @escaping (PaywallResponse?, Error?) -> Void) {
+        shared.requestPaywall(userID: userID, country: country, isDev: isDev, experimentID: experimentID, completion: completion)
     }
 
     /// Perform Charge request to notify Corrily of a purchase action. https://docs.corrily.com/api-reference/create-charge
@@ -57,7 +56,7 @@ private extension CorrilySDK {
         apiClient = .init(apiKey: apiKey)
     }
 
-    func requestPaywall(paywallApiID: String, userID: String?, country: Country, isDev: Bool, experimentID: Int?, completion: @escaping (PaywallResponse?, Error?) -> Void) {
+    func requestPaywall(userID: String?, country: Country, isDev: Bool, experimentID: Int?, completion: @escaping (PaywallResponse?, Error?) -> Void) {
         guard let apiClient else {
             completion(nil, nil)
             return
@@ -66,7 +65,7 @@ private extension CorrilySDK {
         let jsonEncoder = JSONEncoder()
         jsonEncoder.keyEncodingStrategy = .convertToSnakeCase
         guard let payload = try? jsonEncoder.encode(Paywall.Request(
-            apiID: paywallApiID,
+            apiID: apiClient.apiKey,
             userID: userID ?? UserID.userID,
             country: country.rawValue,
             dev: isDev,

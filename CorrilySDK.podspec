@@ -21,12 +21,4 @@ Swift SDK to fetch Corrily prices for in-app Paywall.
   s.ios.deployment_target = '11.0'
 
   s.source_files = 'Sources/CorrilySDK/Classes/**/*'
-  
-  # s.resource_bundles = {
-  #   'CorrilySDK' => ['CorrilySDK/Assets/*.png']
-  # }
-
-  # s.public_header_files = 'Pod/Classes/**/*.h'
-  # s.frameworks = 'UIKit', 'MapKit'
-  # s.dependency 'AFNetworking', '~> 2.3'
 end

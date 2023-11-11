@@ -40,7 +40,7 @@ func application(_ application: UIApplication, didFinishLaunchingWithOptions lau
 ### Request products
 
 ```swift
-CorrilySDK.requestPaywall(paywallApiID: "your_API_ID", userID: nil, country: .UnitedStates, isDev: true) {
+CorrilySDK.requestPaywall(userID: nil, country: .UnitedStates, isDev: true) {
   guard let response = $0 else {
     print("error requesting paywall: \($1)")
     return
