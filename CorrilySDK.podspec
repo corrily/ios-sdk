@@ -14,8 +14,8 @@ Pod::Spec.new do |s|
     :tag => s.version.to_s
   }
 
-  s.ios.deployment_target = '11.0'
+  s.ios.deployment_target = '13.0'
   s.swift_version = '5.1'
 
-  s.source_files = 'Sources/CorrilySDK/Classes/**/*'
+  s.source_files = 'Sources/**/*.{swift}'
 end
