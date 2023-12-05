@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Logger {
+public struct Logger {
   private init() {}
   enum LogLevel {
     case info

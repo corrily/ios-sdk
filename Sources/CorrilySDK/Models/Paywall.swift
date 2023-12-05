@@ -21,16 +21,13 @@ struct Product: Codable {
   var priceUsd: String
 }
 
-struct PaywallResponse: Codable {
+public struct PaywallResponse: Codable {
   var success: Bool
   var products: [Product]
 }
 
-struct PaywallDto: Codable {
-  var apiId: String
+public struct PaywallDto: Codable {
   var userId: String
   var country: String
-  var dev: Bool
-  var experimentId: Int?
 }
  

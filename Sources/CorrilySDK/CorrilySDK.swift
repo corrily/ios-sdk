@@ -16,7 +16,7 @@ final public class CorrilySDK {
     return corrily
   }
   
-  private var dependencies: DependencyManager?
+  let dependencies: DependencyManager
   
   init(dependencies: DependencyManager = DependencyManager()) {
     self.dependencies = dependencies
@@ -40,9 +40,10 @@ final public class CorrilySDK {
 }
 
 public extension CorrilySDK {
-//  static func requestPaywall(_ dto: PaywallDto) async throws -> PaywallResponse {
-//    return try await shared.dependencies!.api.getPaywall(dto)
-//  }
+  static func requestPaywall(userId: String, country: String) async throws -> PaywallResponse? {
+    let dto = PaywallDto(userId: userId, country: country)
+    return try await shared.dependencies.api.getPaywall(dto)
+  }
   
   static func requestCharge() {
     // TODO: Not implemented yet!

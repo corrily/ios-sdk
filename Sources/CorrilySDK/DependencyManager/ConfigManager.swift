@@ -28,7 +28,7 @@ class ConfigManager {
 //  var channel: Channel = .production
   
   var apiKey: String = ""
-  var baseUrl: String = "client.corrily.com/v1"
+  var baseUrl: String = "client.corrily.com"
 
   
   init() {}

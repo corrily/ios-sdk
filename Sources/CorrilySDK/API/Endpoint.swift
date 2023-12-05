@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Endpoint<Response> where Response: Codable {
+public struct Endpoint<Response> where Response: Codable {
   enum HttpMethod: String {
     case get = "GET"
     case post = "POST"
@@ -24,12 +24,14 @@ struct Endpoint<Response> where Response: Codable {
     var urlComponents = URLComponents()
     urlComponents.scheme = "https"
     urlComponents.host = factory.config.baseUrl
-    urlComponents.path = "\(path)"
+    urlComponents.path = path
     urlComponents.queryItems = queryItems
     
     guard let url = urlComponents.url else {
       return nil
     }
+    
+    
     
     var request = URLRequest(url: url)
     request.httpMethod = method.rawValue
@@ -55,7 +57,7 @@ extension Endpoint where Response == PaywallResponse {
     let encoder = JSONEncoder.toSnakeCase
     do {
       let body = try encoder.encode(dto)
-      return Endpoint(path: "/paywall", method: .post, body: body)
+      return Endpoint(path: "/v1/paywall", method: .post, body: body)
     } catch {
       throw error
     }
