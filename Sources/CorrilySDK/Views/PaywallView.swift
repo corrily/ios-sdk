@@ -48,9 +48,7 @@ public struct PaywallView: View {
         ScrollView {
           VStack(spacing: 24) {
             // Logo/Image
-//                      Group {
-//                        AsyncImage(url: URL(string: "https://placehold.co/200x100"))
-//                      }.frame(width: 200,height: 100)
+            RemoteImage(url: "https://placehold.co/300x100/png").frame(width: 300, height: 100)
             // Header
             if (showHeader) {
               Text("Get Your Creative Juices Flowing")
