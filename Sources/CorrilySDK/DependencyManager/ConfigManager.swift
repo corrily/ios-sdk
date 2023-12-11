@@ -7,7 +7,7 @@
 
 import Foundation
 
-class ConfigManager {
+public class ConfigManager {
   
 //  enum Channel {
 //    case production
@@ -27,14 +27,19 @@ class ConfigManager {
 //  }
 //  var channel: Channel = .production
   
-  var apiKey: String = ""
-  var baseUrl: String = "client.corrily.com"
-
+  private (set) var apiKey: String = ""
+  private (set) var baseUrl: String = "client.corrily.com"
   
-  init() {}
+  private (set) var defaultPricingPage: PricingPage?
+  private (set) var fallbackProducts: [Product]?
   
   public func setApiKey(apiKey: String) {
-    Logger.info("set Api Key with \(apiKey)")
     self.apiKey = apiKey
+  }
+  public func setFallbackProducts(with products: [Product]) {
+    self.fallbackProducts = products
+  }
+  public func setDefaultPricingPage(with pricingPage: PricingPage) {
+    self.defaultPricingPage = pricingPage
   }
 }

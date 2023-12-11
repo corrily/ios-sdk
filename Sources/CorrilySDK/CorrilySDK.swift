@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import SwiftUI
 
 final public class CorrilySDK {
   private static var corrily: CorrilySDK?
@@ -16,7 +17,7 @@ final public class CorrilySDK {
     return corrily
   }
   
-  let dependencies: DependencyManager
+  private let dependencies: DependencyManager
   
   init(dependencies: DependencyManager = DependencyManager()) {
     self.dependencies = dependencies
@@ -40,13 +41,34 @@ final public class CorrilySDK {
 }
 
 public extension CorrilySDK {
-  static func requestPaywall(userId: String, country: String) async throws -> PaywallResponse? {
-    let dto = PaywallDto(userId: userId, country: country)
+  static func requestPaywall(userId: String? = nil, country: String, paywallId: Int? = nil) async throws -> PaywallResponse? {
+    let dto = PaywallDto(userId: userId, country: country, paywallId: paywallId)
     return try await shared.dependencies.api.getPaywall(dto)
   }
   
   static func requestCharge() {
     // TODO: Not implemented yet!
     Logger.info("Request Charge not implemented yet!")
+  }
+}
+
+public extension CorrilySDK {
+  static func renderPaywall(customView: ((_: FactoryProtocol) -> any View)? = nil) -> some View {
+    if let customView = customView {
+      return AnyView(customView(shared.dependencies))
+    }
+    return AnyView(PaywallView(factory: shared.dependencies))
+  }
+}
+
+public extension CorrilySDK {
+  static func setFallbackProducts(with products: [Product]) {
+    shared.dependencies.config.setFallbackProducts(with: products)
+  }
+}
+
+public extension CorrilySDK {
+  static func setUser(userId: String, country: String? = nil) {
+    shared.dependencies.user.setUser(userId: userId, country: country)
   }
 }

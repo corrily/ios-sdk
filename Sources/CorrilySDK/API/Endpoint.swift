@@ -63,3 +63,15 @@ extension Endpoint where Response == PaywallResponse {
     }
   }
 }
+
+extension Endpoint where Response == IdentifyResponse {
+  static func identify(_ dto: IdentifyDto) throws -> Self {
+    let encoder = JSONEncoder.toSnakeCase
+    do {
+      let body = try encoder.encode(dto)
+      return Endpoint(path: "/v1/identify", method: .post, body: body)
+    } catch {
+      throw error
+    }
+  }
+}

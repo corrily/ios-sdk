@@ -20,4 +20,8 @@ extension Date {
   var isoString: String {
     return Self.isoFormatter.string(from: self)
   }
+  
+  var timestamp: Int {
+    return Int(Self().timeIntervalSince1970)
+  }
 }

@@ -6,8 +6,7 @@ let sdkName = "CorrilySDK"
 let package = Package(
   name: sdkName,
   platforms: [
-    .iOS(.v13),
-    .macOS(.v10_15)
+    .iOS(.v14)
   ],
   products: [
     .library(name: sdkName, targets: [sdkName]),

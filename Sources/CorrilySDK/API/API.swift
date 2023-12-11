@@ -14,12 +14,22 @@ class API {
     self.factory = factory
   }
   
+  struct ServerErrorResponse: Decodable {
+    var success: Bool
+    var errorMessage: String
+  }
+  
   let decoder = JSONDecoder.fromSnakeCase
   
   private func request<Response: Codable>(endpoint: Endpoint<Response>) async throws -> Response {
     let urlSession = URLSession(configuration: .default)
-    guard let request = await endpoint.createURLRequest(factory: factory) else {
+    guard var request = await endpoint.createURLRequest(factory: factory) else {
       throw HttpError.invalidRequest
+    }
+    
+    guard let apiKey = request.allHTTPHeaderFields?["X-Api-Key"] else {
+      Logger.error("It looks like you forgot to initialize CorrilySDK. Please call `CorrilySDK.start(apiKey: String)` when launch your app!")
+      throw HttpError.notAuthenticated
     }
     
     let (data, response) = try await urlSession.data(for: request)
@@ -34,18 +44,20 @@ class API {
       } catch {
         throw error
       }
-      case 401:
-        throw HttpError.notAuthenticated
-      case 404:
-        throw HttpError.notFound
       case -1009:
         throw HttpError.noInternet
-      default:
+      default: do {
+        let serverError = try decoder.decode(ServerErrorResponse.self, from: data)
+        // FIXME: throw serverError.errorMessage instead of HttpError.unknown
         throw HttpError.unknown
+      } catch {
+        throw error
+      }
     }
   }
   
   public func getPaywall(_ dto: PaywallDto) async throws -> PaywallResponse {
     return try await request(endpoint: .paywall(dto))
   }
+
 }

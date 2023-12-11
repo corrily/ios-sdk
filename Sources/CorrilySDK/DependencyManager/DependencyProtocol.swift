@@ -7,6 +7,8 @@
 
 import Foundation
 
-protocol FactoryProtocol: AnyObject {
+public protocol FactoryProtocol: AnyObject {
   var config: ConfigManager! { get }
+  var storage: StorageManager! { get }
+  var user: UserManager! { get }
 }
