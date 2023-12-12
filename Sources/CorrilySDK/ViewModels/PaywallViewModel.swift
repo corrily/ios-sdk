@@ -29,7 +29,7 @@ public class PaywallViewModel: ObservableObject {
     self.isError = false
     self.isLoading = true
     do {
-      let dto = PaywallDto(country: factory.user.country,userId: factory.user.userId, ip: factory.user.userAliasId,paywallId: paywallId)
+      let dto = PaywallDto(country: factory.user.country, userId: factory.user.userId, ip: factory.user.deviceId, paywallId: paywallId)
       let response = try await factory.api.getPaywall(dto)
       DispatchQueue.main.async {
         var yearly: [Product] = []

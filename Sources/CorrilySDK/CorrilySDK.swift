@@ -42,7 +42,7 @@ final public class CorrilySDK {
 
 public extension CorrilySDK {
   static func requestPaywall(userId: String? = nil, country: String, paywallId: Int? = nil) async throws -> PaywallResponse? {
-    let dto = PaywallDto(country: country, userId: userId, ip: shared.dependencies.user.userAliasId, paywallId: paywallId)
+    let dto = PaywallDto(country: country, userId: userId, ip: shared.dependencies.user.deviceId, paywallId: paywallId)
     return try await shared.dependencies.api.getPaywall(dto)
   }
 }
