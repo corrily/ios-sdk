@@ -42,17 +42,17 @@ final public class CorrilySDK {
 
 public extension CorrilySDK {
   static func requestPaywall(userId: String? = nil, country: String, paywallId: Int? = nil) async throws -> PaywallResponse? {
-    let dto = PaywallDto(userId: userId, country: country, paywallId: paywallId)
+    let dto = PaywallDto(country: country, userId: userId, ip: shared.dependencies.user.userAliasId, paywallId: paywallId)
     return try await shared.dependencies.api.getPaywall(dto)
   }
 }
 
 public extension CorrilySDK {
-  static func renderPaywall(customView: ((_: FactoryProtocol) -> any View)? = nil) -> some View {
+  static func renderPaywall(paywallId: Int? = nil, action: (() -> Void)? = nil, customView: ((_: FactoryProtocol) -> any View)? = nil) -> some View {
     if let customView = customView {
       return AnyView(customView(shared.dependencies))
     }
-    return AnyView(PaywallView(factory: shared.dependencies))
+    return AnyView(PaywallView(factory: shared.dependencies, onSuccess: action))
   }
 }
 

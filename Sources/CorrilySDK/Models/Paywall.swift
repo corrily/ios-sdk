@@ -79,8 +79,8 @@ public struct PaywallResponse: Codable {
 }
 
 public struct PaywallDto: Codable {
-  var userId: String?
   var country: String
+  var userId: String?
   var ip: String?
   var paywallId: Int?
 }

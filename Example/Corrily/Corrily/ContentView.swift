@@ -19,7 +19,9 @@ struct ContentView: View {
         Text("Show Paywall")
       })
       .sheet(isPresented: $showPaywall) {
-        CorrilySDK.renderPaywall()
+        CorrilySDK.renderPaywall(action: {
+          showPaywall = false
+        })
       }
       Button(action: {
         showPaywallCustomView = true
@@ -27,9 +29,9 @@ struct ContentView: View {
         Text("Show Paywall with custom view")
       })
       .sheet(isPresented: $showPaywallCustomView) {
-        CorrilySDK.renderPaywall { factory in
+        CorrilySDK.renderPaywall(customView: { factory in
           CustomView(factory: factory)
-        }
+        })
       }
     }
     .padding()

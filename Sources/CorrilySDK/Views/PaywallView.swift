@@ -9,12 +9,14 @@ import SwiftUI
 
 public struct PaywallView: View {
   let factory: FactoryProtocol
+  let onSuccess: (() -> Void)?
   @StateObject var paywallVM: PaywallViewModel
   @State var billingType: Interval = Interval.month
   @State var selectedProduct: Product? = nil
   
-  init(factory: FactoryProtocol) {
+  init(factory: FactoryProtocol, onSuccess: (() -> Void)? = nil) {
     self.factory = factory
+    self.onSuccess = onSuccess
     _paywallVM = StateObject(wrappedValue: PaywallViewModel(factory: factory))
   }
   
@@ -94,7 +96,7 @@ public struct PaywallView: View {
                           }
                         }
                         .frame(maxWidth: .infinity)
-                        VStack(spacing: 12) {
+                        VStack(spacing: 4) {
                           Text(product.price)
                             .font(.title2).fontWeight(.bold)
                           Text(billingType == Interval.month ? "Billed monthly" : "Billed annually")
@@ -106,21 +108,29 @@ public struct PaywallView: View {
                     .frame(maxWidth: .infinity)
                     .overlay(
                       RoundedRectangle(cornerRadius: 10)
-                        .stroke(selectedProduct?.id == product.id ? Color(hex: buttonsColor) : Color.gray, lineWidth: 2)
+                        .stroke(selectedProduct?.id == product.id ? Color(hex: buttonsColor) : Color(hex: "#eeeeee"), lineWidth: 2)
                     )
                     
                     if (product.overrides?.badge != nil) {
                       Text(product.overrides!.badge)
                         .padding([.horizontal], 16)
                         .padding([.vertical], 4)
-                        .background(Color.yellow)
+                        .background(Color(hex: buttonsColor))
+                        .foregroundColor(Color(hex: buttonsTextColor))
                         .clipShape(RoundedRectangle(cornerRadius: 7))
                         .offset(x:-4, y:4)
                     }
                   }
                 }.buttonStyle(PlainButtonStyle())
               }
-              Button(action: {}) {
+              Button(action: {
+                if (selectedProduct != nil ) {
+                  Logger.info("Selected product with productId: \(selectedProduct!.id) and apiId \(selectedProduct!.apiId)")
+                  if (onSuccess != nil) {
+                    onSuccess!()
+                  }
+                }
+              }) {
                 Text("Start your 7-day free trial")
                   .padding(.vertical, 16)
                   .padding(.horizontal, 24)

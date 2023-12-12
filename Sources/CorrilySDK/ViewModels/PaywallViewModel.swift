@@ -28,7 +28,7 @@ public class PaywallViewModel: ObservableObject {
     self.isError = false
     self.isLoading = true
     do {
-      guard let paywall = try await CorrilySDK.requestPaywall(userId: factory.user.userId, country: factory.user.country) else {
+      guard let paywall = try await CorrilySDK.requestPaywall(userId: factory.user.userId, country: factory.user.country, paywallId: paywallId) else {
         DispatchQueue.main.async {
           self.isLoading = false
         }
