@@ -14,11 +14,6 @@ class API {
     self.factory = factory
   }
   
-  struct ServerErrorResponse: Decodable {
-    var success: Bool
-    var errorMessage: String
-  }
-  
   let decoder = JSONDecoder.fromSnakeCase
   
   private func request<Response: Codable>(endpoint: Endpoint<Response>) async throws -> Response {
@@ -47,9 +42,8 @@ class API {
       case -1009:
         throw HttpError.noInternet
       default: do {
-        let serverError = try decoder.decode(ServerErrorResponse.self, from: data)
-        // FIXME: throw serverError.errorMessage instead of HttpError.unknown
-        throw HttpError.unknown
+        let serverError = try decoder.decode(ErrorResponse.self, from: data)
+        throw HttpError.clientError(serverError)
       } catch {
         throw error
       }
