@@ -10,20 +10,21 @@ import Foundation
 @MainActor
 public class PaywallViewModel: ObservableObject {
   let factory: FactoryProtocol
+  @Published public private (set) var isLoading: Bool = true
+  @Published public private (set) var isError: Bool = false
+  
   @Published public var paywall: PaywallResponse? = nil
   @Published public var yearlyProducts: [Product] = []
   @Published public var monthlyProducts: [Product] = []
-  @Published private (set) var isLoading: Bool = true
-  @Published private (set) var isError: Bool = false
   
-  init(factory: FactoryProtocol) {
+  public init(paywallId: Int? = nil, factory: FactoryProtocol) {
     self.factory = factory
     Task {
-      await self.getPaywall()
+      await self.getPaywall(paywallId: paywallId)
     }
   }
   
-  public func getPaywall() async {
+  func getPaywall(paywallId: Int? = nil) async {
     self.isError = false
     self.isLoading = true
     do {
@@ -56,6 +57,5 @@ public class PaywallViewModel: ObservableObject {
         self.isLoading = false
       }
     }
-    
   }
 }

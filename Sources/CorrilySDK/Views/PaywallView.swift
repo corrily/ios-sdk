@@ -11,6 +11,7 @@ public struct PaywallView: View {
   let factory: FactoryProtocol
   @StateObject var paywallVM: PaywallViewModel
   @State var billingType: Interval = Interval.month
+  @State var selectedProduct: Product? = nil
   
   init(factory: FactoryProtocol) {
     self.factory = factory
@@ -44,6 +45,7 @@ public struct PaywallView: View {
         paywallVM.paywall?.pricingPage.buttonsColor ?? "#ffff00",
         "#ffffff"
       )
+      
       GeometryReader { geo in
         VStack {
           ScrollView {
@@ -73,61 +75,75 @@ public struct PaywallView: View {
               })
               // Render Products
               ForEach(products) { product in
-                ZStack(alignment: .topTrailing) {
-                  VStack(alignment: .leading) {
-                    Text(product.name)
-                      .font(.headline)
-                      .multilineTextAlignment(.leading)
-                    HStack {
-                      VStack(alignment: .leading) {
-                        ForEach(product.features ?? []) { feature in
-                          Text("- \(feature.description)")
-                            .font(.caption)
-                            .frame(maxWidth: .infinity, alignment: .leading)
+                Button(action: {
+                  withAnimation(.easeInOut) {
+                    selectedProduct = product
+                  }
+                }) {
+                  ZStack(alignment: .topTrailing) {
+                    VStack(alignment: .leading) {
+                      Text(product.name)
+                        .font(.headline)
+                        .multilineTextAlignment(.leading)
+                      HStack {
+                        VStack(alignment: .leading) {
+                          ForEach(product.features ?? []) { feature in
+                            Text("- \(feature.description)")
+                              .font(.caption)
+                              .frame(maxWidth: .infinity, alignment: .leading)
+                          }
                         }
-                      }
-                      .frame(maxWidth: .infinity)
-                      VStack(spacing: 12) {
-                        Text(product.price)
-                          .font(.title2).fontWeight(.bold)
-                        Text("$96 billed annually")
-                          .font(.caption).fontWeight(.bold)
-                      }
-                    }.frame(maxWidth: .infinity)
+                        .frame(maxWidth: .infinity)
+                        VStack(spacing: 12) {
+                          Text(product.price)
+                            .font(.title2).fontWeight(.bold)
+                          Text(billingType == Interval.month ? "Billed monthly" : "Billed annually")
+                            .font(.caption).fontWeight(.bold)
+                        }
+                      }.frame(maxWidth: .infinity)
+                    }
+                    .padding()
+                    .frame(maxWidth: .infinity)
+                    .overlay(
+                      RoundedRectangle(cornerRadius: 10)
+                        .stroke(selectedProduct?.id == product.id ? Color(hex: buttonsColor) : Color.gray, lineWidth: 2)
+                    )
+                    
+                    if (product.overrides?.badge != nil) {
+                      Text(product.overrides!.badge)
+                        .padding([.horizontal], 16)
+                        .padding([.vertical], 4)
+                        .background(Color.yellow)
+                        .clipShape(RoundedRectangle(cornerRadius: 7))
+                        .offset(x:-4, y:4)
+                    }
                   }
-                  .padding()
-                  .frame(maxWidth: .infinity)
-                  .background(Color.purple) // Set the background color to purple
-                  .foregroundColor(.white) // Set the text color to white
+                }.buttonStyle(PlainButtonStyle())
+              }
+              Button(action: {}) {
+                Text("Start your 7-day free trial")
+                  .padding(.vertical, 16)
+                  .padding(.horizontal, 24)
+                  .background(Color(hex: buttonsColor))
+                  .foregroundColor(Color(hex: buttonsTextColor))
+                  .font(Font.title.weight(.bold))
                   .clipShape(
-                    RoundedRectangle(cornerRadius: 20)
+                    RoundedRectangle(cornerRadius: 10)
                   )
-                  .onTapGesture {
-                    print("Selected product \(product.name)")
-                  }
-                  
-                  Text("Recommended")
-                    .padding([.horizontal], 16)
-                    .padding([.vertical], 4)
-                    .background(Color.yellow)
-                    .clipShape(RoundedRectangle(cornerRadius: 7))
-                    .offset(x:0, y:-16)
+              }.disabled(selectedProduct == nil)
+              HStack {
+                Button(action: {}) {
+                  Text("Restore purchase").foregroundColor(Color(hex: "#000000")).font(.caption)
+                }
+                Text("|").foregroundColor(Color(hex: "#999999")).font(.caption)
+                Button(action: {}) {
+                  Text("Terms and Conditions").foregroundColor(Color(hex: "#000000")).font(.caption)
                 }
               }
-              // Footer
-              Text("Product features can change anytime. Payment will be chaged to your App Store account. Subscription will auto-renew at the selected interval. You can cancel the subscription at any time. By clicking, Subscribe, you agree to the [Subscription Terms](https://google.com).").font(.caption)
             }
             .frame(maxWidth: .infinity)
             .padding(16)
-          }
-          
-          Button(action: {}) {
-            Text("Start your 7-day free trial")
-              .frame(maxWidth: .infinity)
-              .padding()
-              .background(Color(hex: buttonsColor))
-              .foregroundColor(Color(hex: buttonsTextColor))
-              .font(Font.title.weight(.bold))
+            
           }
         }.background(Color(hex: backgroundColor)).edgesIgnoringSafeArea(.bottom)
       }
