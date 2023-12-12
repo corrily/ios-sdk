@@ -31,7 +31,9 @@ public class PaywallViewModel: ObservableObject {
     do {
       let dto = PaywallDto(country: factory.user.country, userId: factory.user.userId, ip: factory.user.deviceId, paywallId: paywallId)
       let response = try await factory.api.getPaywall(dto)
-      DispatchQueue.main.async {
+      
+    // Shouldn't we use @MainActor instead or low-level DispatchQueue?
+    DispatchQueue.main.async {
         var yearly: [Product] = []
         var monthly: [Product] = []
         

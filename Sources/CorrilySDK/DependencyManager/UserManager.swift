@@ -44,7 +44,7 @@ public class UserManager {
     return parts.joined(separator: ":")
   }
   
-  public func setUser(userId: String? = nil, country: String? = nil) {
+    public func setUser(userId: String? = nil, country: String? = nil, notifyCorrilyBackEnd: Bool = true) {
     self.userId = userId
     if (country != nil) {
       self.country = country!

@@ -11,7 +11,9 @@ import Foundation
 extension URLSession {
   func data(for request: URLRequest) async throws -> (Data, URLResponse) {
      try await withCheckedThrowingContinuation { continuation in
-       let task = self.dataTask(with: request, completionHandler: { data, response, error in
+       
+         // Shouldn't we use await dataTask here and remove completion handler?
+         let task = self.dataTask(with: request, completionHandler: { data, response, error in
          guard let data = data, let response = response else {
            let error = error ?? URLError(.badServerResponse)
            return continuation.resume(throwing: error)

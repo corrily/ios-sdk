@@ -19,7 +19,7 @@ public class ConfigManager {
       case .production:
         return "https://client.corrily.com"
       case .staging:
-        return "https://default.corrily.com/mainapi"
+        return "https://staging.corrily.com/mainapi"
       case .develop:
         return "client.corrily.com"
       }
