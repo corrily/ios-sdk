@@ -23,6 +23,9 @@ public struct PaywallView: View {
   public var body: some View {
     if (paywallVM.isLoading) {
       PaywallViewSkeleton()
+    } else if (paywallVM.isError) {
+      Text("Can not fetch paywall with message:")
+      Text(paywallVM.errorMessage ?? "Something went wrong!")
     } else {
       let (
         showHeader,

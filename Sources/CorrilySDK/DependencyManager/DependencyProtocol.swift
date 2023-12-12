@@ -11,4 +11,6 @@ public protocol FactoryProtocol: AnyObject {
   var config: ConfigManager! { get }
   var storage: StorageManager! { get }
   var user: UserManager! { get }
+  var paywall: PaywallManager! { get }
+  var api: API! { get }
 }

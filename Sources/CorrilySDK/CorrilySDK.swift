@@ -57,13 +57,13 @@ public extension CorrilySDK {
 }
 
 public extension CorrilySDK {
-  static func setFallbackProducts(with products: [Product]) {
-    shared.dependencies.config.setFallbackProducts(with: products)
+  static func setFallbackPaywall(with paywall: PaywallResponse) {
+    shared.dependencies.paywall.setFallbackPaywall(fallbackPaywall: paywall)
   }
 }
 
 public extension CorrilySDK {
-  static func setUser(userId: String, country: String? = nil) {
+  static func setUser(userId: String? = nil, country: String? = nil) {
     shared.dependencies.user.setUser(userId: userId, country: country)
   }
 }

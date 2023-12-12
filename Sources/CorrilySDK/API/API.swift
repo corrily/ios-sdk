@@ -7,7 +7,7 @@
 
 import Foundation
 
-class API {
+public class API {
   var factory: FactoryProtocol
   
   init(factory: FactoryProtocol) {
@@ -52,6 +52,12 @@ class API {
   
   public func getPaywall(_ dto: PaywallDto) async throws -> PaywallResponse {
     return try await request(endpoint: .paywall(dto))
+  }
+  
+  @discardableResult
+  public func setUserIdentify(_ dto: IdentifyDto) async throws -> IdentifyResponse {
+    Logger.info("Set User Identify for \(dto.userId) with \(dto.ip)")
+    return try await request(endpoint: .identify(dto))
   }
 
 }

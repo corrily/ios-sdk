@@ -30,16 +30,7 @@ public class ConfigManager {
   private (set) var apiKey: String = ""
   private (set) var baseUrl: String = "client.corrily.com"
   
-  private (set) var defaultPricingPage: PricingPage?
-  private (set) var fallbackProducts: [Product]?
-  
   public func setApiKey(apiKey: String) {
     self.apiKey = apiKey
-  }
-  public func setFallbackProducts(with products: [Product]) {
-    self.fallbackProducts = products
-  }
-  public func setDefaultPricingPage(with pricingPage: PricingPage) {
-    self.defaultPricingPage = pricingPage
   }
 }

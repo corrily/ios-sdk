@@ -12,6 +12,7 @@ final class DependencyManager {
   private (set) var api: API!
   private (set) var storage: StorageManager!
   private (set) var user: UserManager!
+  private (set) var paywall: PaywallManager!
   
   private let storageServiceKey = "CorrilySDK"
   
@@ -20,6 +21,7 @@ final class DependencyManager {
     storage = StorageManager(service: storageServiceKey)
     api = API(factory: self)
     user = UserManager(factory: self)
+    paywall = PaywallManager(factory: self)
   }
 }
 

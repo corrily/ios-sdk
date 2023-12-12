@@ -12,6 +12,7 @@ public class PaywallViewModel: ObservableObject {
   let factory: FactoryProtocol
   @Published public private (set) var isLoading: Bool = true
   @Published public private (set) var isError: Bool = false
+  @Published public private (set) var errorMessage: String? = nil
   
   @Published public var paywall: PaywallResponse? = nil
   @Published public var yearlyProducts: [Product] = []
@@ -28,17 +29,13 @@ public class PaywallViewModel: ObservableObject {
     self.isError = false
     self.isLoading = true
     do {
-      guard let paywall = try await CorrilySDK.requestPaywall(userId: factory.user.userId, country: factory.user.country, paywallId: paywallId) else {
-        DispatchQueue.main.async {
-          self.isLoading = false
-        }
-        return
-      }
+      let dto = PaywallDto(country: factory.user.country,userId: factory.user.userId, ip: factory.user.userAliasId,paywallId: paywallId)
+      let response = try await factory.api.getPaywall(dto)
       DispatchQueue.main.async {
         var yearly: [Product] = []
         var monthly: [Product] = []
         
-        for product in paywall.products {
+        for product in response.products {
           if (product.interval == Interval.year) {
             yearly.append(product)
           }
@@ -48,8 +45,16 @@ public class PaywallViewModel: ObservableObject {
         }
         self.yearlyProducts = yearly
         self.monthlyProducts = monthly
-        self.paywall = paywall
+        self.paywall = response
         self.isLoading = false
+      }
+    } catch HttpError.clientError(let clientError) {
+      // FIXME: Handle load fallback paywall for some http status code
+      // Other errors should be rendered in UI
+      DispatchQueue.main.async {
+        self.isError = true
+        self.isLoading = false
+        self.errorMessage = clientError.errorMessage
       }
     } catch {
       DispatchQueue.main.async {

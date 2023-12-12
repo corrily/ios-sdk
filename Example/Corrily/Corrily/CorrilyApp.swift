@@ -11,12 +11,11 @@ import CorrilySDK
 @main
 struct CorrilyApp: App {
   init() {
-    CorrilySDK.start(apiKey: "538b7425-f86d-4c6d-a186-7ac39d297c3d")
-    CorrilySDK.setUser(userId: "test_1234501", country: "US")
+    CorrilySDK.start(apiKey: "")
   }
-    var body: some Scene {
-        WindowGroup {
-            ContentView()
-        }
+  var body: some Scene {
+    WindowGroup {
+      ContentView()
     }
+  }
 }

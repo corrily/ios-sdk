@@ -10,7 +10,7 @@ import Foundation
 public class UserManager {
   private (set) var userId: String?
   private (set) var userAliasId: String!
-  private (set) var country: String = "US"
+  private (set) var country: String! = "XX"
   
   var factory: FactoryProtocol
   
@@ -44,8 +44,22 @@ public class UserManager {
     return parts.joined(separator: ":")
   }
   
-  public func setUser(userId: String, country: String? = nil) {
+  public func setUser(userId: String? = nil, country: String? = nil) {
     self.userId = userId
-    self.country = country ?? "US"
+    if (country != nil) {
+      self.country = country!
+    }
+    
+    Task.detached {
+      if (userId == nil) {
+        return
+      }
+      let dto = IdentifyDto(userId: userId!, ip: self.factory.user.userAliasId)
+      do {
+        try await self.factory.api.setUserIdentify(dto)
+      } catch {
+        Logger.error("Cannot setUserIdentify for \(userId!) with \(self.factory.user.userAliasId!)")
+      }
+    }
   }
 }
