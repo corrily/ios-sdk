@@ -12,7 +12,7 @@ import CorrilySDK
 struct CorrilyApp: App {
   init() {
     CorrilySDK.start(apiKey: "538b7425-f86d-4c6d-a186-7ac39d297c3d")
-    CorrilySDK.setUser(userId: "thanhtest", country: "US")
+    CorrilySDK.setUser(userId: "test_1234501", country: "US")
   }
     var body: some Scene {
         WindowGroup {

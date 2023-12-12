@@ -9,16 +9,27 @@ import SwiftUI
 import CorrilySDK
 
 struct ContentView: View {
-  @State private var isPresented = false
+  @State private var showPaywall = false
+  @State private var showPaywallCustomView = false
   var body: some View {
-    VStack {
+    VStack(spacing: 24) {
       Button(action: {
-        isPresented = true
+        showPaywall = true
       }, label: {
         Text("Show Paywall")
       })
-      .sheet(isPresented: $isPresented) {
+      .sheet(isPresented: $showPaywall) {
         CorrilySDK.renderPaywall()
+      }
+      Button(action: {
+        showPaywallCustomView = true
+      }, label: {
+        Text("Show Paywall with custom view")
+      })
+      .sheet(isPresented: $showPaywallCustomView) {
+        CorrilySDK.renderPaywall { factory in
+          CustomView(factory: factory)
+        }
       }
     }
     .padding()
