@@ -45,11 +45,6 @@ public extension CorrilySDK {
     let dto = PaywallDto(userId: userId, country: country, paywallId: paywallId)
     return try await shared.dependencies.api.getPaywall(dto)
   }
-  
-  static func requestCharge() {
-    // TODO: Not implemented yet!
-    Logger.info("Request Charge not implemented yet!")
-  }
 }
 
 public extension CorrilySDK {
