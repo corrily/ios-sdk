@@ -9,26 +9,25 @@ import Foundation
 
 public class ConfigManager {
   
-//  enum Channel {
-//    case production
-//    case staging
-//    case develop
-//    
-//    var baseUrl: String {
-//      switch self {
-//      case .production:
-//        return "client.corrily.com/v1"
-//      case .staging:
-//        return "client.corrily.com"
-//      case .develop:
-//        return "client.corrily.com"
-//      }
-//    }
-//  }
-//  var channel: Channel = .production
+  enum Channel {
+    case production
+    case staging
+    case develop
+    
+    var baseUrl: String {
+      switch self {
+      case .production:
+        return "https://client.corrily.com"
+      case .staging:
+        return "https://default.corrily.com/mainapi"
+      case .develop:
+        return "client.corrily.com"
+      }
+    }
+  }
+  var channel: Channel = .staging
   
   private (set) var apiKey: String = ""
-  private (set) var baseUrl: String = "client.corrily.com"
   
   public func setApiKey(apiKey: String) {
     self.apiKey = apiKey

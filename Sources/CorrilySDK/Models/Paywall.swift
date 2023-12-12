@@ -23,6 +23,7 @@ public struct Product: Codable, Identifiable {
   public var cents: Bool
   public var features: [Feature]?
   public var overrides: ProductOverrides?
+  public var trial: ProductTrial?
 }
 
 public struct Feature: Codable, Identifiable {

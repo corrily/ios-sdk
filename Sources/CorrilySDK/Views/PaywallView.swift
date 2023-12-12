@@ -71,25 +71,27 @@ public struct PaywallView: View {
                   .font(Font.headline.weight(.regular))
                   .multilineTextAlignment(.center)
               }
-              Toggle(isOn: Binding(get: {
-                self.billingType == Interval.month
-              }, set: {
-                newValue in self.billingType = newValue ? Interval.month : Interval.year
-              }), label: {
-                Text("Monthly bill")
-              })
+                Toggle(isOn: Binding(get: {
+                  self.billingType == Interval.month
+                }, set: {
+                  newValue in self.billingType = newValue ? Interval.month : Interval.year
+                }), label: {
+                  Text("Monthly bill").frame(maxWidth: .infinity, alignment: .trailing)
+                })
+              
               // Render Products
               ForEach(products) { product in
                 Button(action: {
-                  withAnimation(.easeInOut) {
-                    selectedProduct = product
-                  }
+                  selectedProduct = product
                 }) {
                   ZStack(alignment: .topTrailing) {
                     VStack(alignment: .leading) {
                       Text(product.name)
                         .font(.headline)
                         .multilineTextAlignment(.leading)
+                      if (product.overrides?.description != nil && product.overrides?.description.isEmpty != true) {
+                        Text(product.overrides!.description).font(.subheadline).multilineTextAlignment(.leading)
+                      }
                       HStack {
                         VStack(alignment: .leading) {
                           ForEach(product.features ?? []) { feature in
@@ -114,7 +116,7 @@ public struct PaywallView: View {
                         .stroke(selectedProduct?.id == product.id ? Color(hex: buttonsColor) : Color(hex: "#eeeeee"), lineWidth: 2)
                     )
                     
-                    if (product.overrides?.badge != nil) {
+                    if (product.overrides?.badge != nil && product.overrides?.badge.isEmpty != true) {
                       Text(product.overrides!.badge)
                         .padding([.horizontal], 16)
                         .padding([.vertical], 4)
@@ -134,12 +136,13 @@ public struct PaywallView: View {
                   }
                 }
               }) {
-                Text("Start your 7-day free trial")
+                Text(selectedProduct?.trial?.trialDays != nil ? "Start your \(selectedProduct!.trial!.trialDays)-day free trial" : "Continue")
                   .padding(.vertical, 16)
                   .padding(.horizontal, 24)
+                  .frame(maxWidth: .infinity)
                   .background(Color(hex: buttonsColor))
                   .foregroundColor(Color(hex: buttonsTextColor))
-                  .font(Font.title.weight(.bold))
+                  .font(Font.body.weight(.bold))
                   .clipShape(
                     RoundedRectangle(cornerRadius: 10)
                   )

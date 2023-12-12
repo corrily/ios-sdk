@@ -21,17 +21,9 @@ public struct Endpoint<Response> where Response: Codable {
   
   
   func createURLRequest(factory: FactoryProtocol) async -> URLRequest? {
-    var urlComponents = URLComponents()
-    urlComponents.scheme = "https"
-    urlComponents.host = factory.config.baseUrl
-    urlComponents.path = path
-    urlComponents.queryItems = queryItems
-    
-    guard let url = urlComponents.url else {
+    guard let url = URL(string: "\(factory.config.channel.baseUrl)\(path)") else {
       return nil
     }
-    
-    
     
     var request = URLRequest(url: url)
     request.httpMethod = method.rawValue
