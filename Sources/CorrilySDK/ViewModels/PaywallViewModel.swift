@@ -10,9 +10,10 @@ import Foundation
 @MainActor
 public class PaywallViewModel: ObservableObject {
   let factory: FactoryProtocol
-  @Published public private (set) var isLoading: Bool = true
-  @Published public private (set) var isError: Bool = false
-  @Published public private (set) var errorMessage: String? = nil
+  
+  @Published public private(set) var isLoading = true
+  @Published public private(set) var isError = false
+  @Published public private(set) var errorMessage: String? = nil
   
   @Published public var paywall: PaywallResponse? = nil
   @Published public var yearlyProducts: [Product] = []
@@ -24,42 +25,43 @@ public class PaywallViewModel: ObservableObject {
       await self.getPaywall(paywallId: paywallId)
     }
   }
+
+  public func purchase(product: Product) {
+    Logger.info("Request purchase for product", trace: product)
+    Logger.warn("Not implemented yet!")
+  }
   
   func getPaywall(paywallId: Int? = nil) async {
-    self.isError = false
-    self.isLoading = true
+    isError = false
+    isLoading = true
+    
     do {
-      let dto = PaywallDto(country: factory.user.country, userId: factory.user.userId, ip: factory.user.deviceId, paywallId: paywallId)
+      let dto = PaywallDto(
+        country: factory.user.country,
+        userId: factory.user.userId,
+        ip: factory.user.deviceId,
+        paywallId: paywallId
+      )
       let response = try await factory.api.getPaywall(dto)
-      DispatchQueue.main.async {
-        var yearly: [Product] = []
-        var monthly: [Product] = []
-        
-        for product in response.products {
-          if (product.interval == Interval.year) {
-            yearly.append(product)
-          }
-          if (product.interval == Interval.month) {
-            monthly.append(product)
-          }
-        }
-        self.yearlyProducts = yearly
-        self.monthlyProducts = monthly
-        self.paywall = response
-        self.isLoading = false
-      }
+      
+      yearlyProducts = response.products.filter { $0.interval == .year }
+      monthlyProducts = response.products.filter { $0.interval == .month }
+      paywall = response
+      isLoading = false
+      
     } catch HttpError.clientError(let clientError) {
-      // FIXME: Handle load fallback paywall for some http status code
-      // Other errors should be rendered in UI
-      DispatchQueue.main.async {
-        self.isError = true
-        self.isLoading = false
-        self.errorMessage = clientError.errorMessage
-      }
+      // Handle load fallback paywall for some http status code
+      isError = true
+      errorMessage = clientError.errorMessage
+      isLoading = false
+      
     } catch {
-      DispatchQueue.main.async {
-        self.isError = true
-        self.isLoading = false
+      if let fallbackPaywall = factory.paywall.fallbackPaywall {
+        paywall = fallbackPaywall
+        isLoading = false
+      } else {
+        isError = true
+        isLoading = false
       }
     }
   }
