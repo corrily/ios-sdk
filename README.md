@@ -26,46 +26,30 @@ Import the SDK module: `import CorrilySDK`
 
 All public methods are documented, please see details in their apidoc.
 
-### SDK start
+### Initialization
 
-Call SDK's `start()` method at app launch time, for example:
-
-```swift
-func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-  CorrilySDK.start(apiKey: "your_API_key")
-  return true
-}
-```
-
-### Request products
+To initiate the CorrilySDK, call the `start` method with your `apiKey`. This should only be done once, typically when your app is launched.
 
 ```swift
-CorrilySDK.requestPaywall(userID: nil, country: .UnitedStates, isDev: true) {
-  guard let response = $0 else {
-    print("error requesting paywall: \($1)")
-    return
-  }
-  // process response.monthlyProducts and response.yearlyProducts
-}
+CorrilySDK.start(apiKey: "your_api_key_here")
 ```
 
-### Send charge request
-
-This should be done in the `updatedTransactions` method of `SKPaymentTransactionObserver`. Call the method regardless of the transaction state, example:
+### Setting User Properties
+The setUser method allows you to add additional properties for your user. Moreover, it ensures that the user's prices are linked to their userId and persisted across sessions, even if they log out and re-login.
 
 ```swift
-func paymentQueue(_ queue: SKPaymentQueue, updatedTransactions transactions: [SKPaymentTransaction]) {
-  transactions.forEach {
-    // here `product` is StoreKit product, probably the one that's being purchased at the moment
-    // `corrilyProduct` is the corresponding Corrily product
-    CorrilySDK.requestCharge(
-      transaction: $0,
-      product: product,
-      paywallProduct: corrilyProduct,
-      userID: nil,
-      country: .UnitedStates
-    )
-    queue.finishTransaction($0)
-  }
-}
+CorrilySDK.setUser(userId: "optional_user_id", country: "optional_country_code")
 ```
+
+### Paywall Rendering
+To display the default paywall template, use the renderPaywall method:
+```swift
+CorrilySDK.renderPaywall(paywallId: Optional<Int>)
+```
+
+### Setting a Fallback Paywall
+In scenarios where the SDK is unable to retrieve the paywall details from the API, having a fallback paywall ensures your users have uninterrupted access. Use the setFallbackPaywall method to set this up:
+```swift
+CorrilySDK.setFallbackPaywall(paywall: your_fallback_paywall_here)
+```
+The PaywallResponse object should match the expected format your application uses to render paywalls, ensuring consistency for your users.

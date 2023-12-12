@@ -4,18 +4,18 @@ import PackageDescription
 let sdkName = "CorrilySDK"
 
 let package = Package(
-    name: sdkName,
-    platforms: [
-        .iOS(.v11),
-    ],
-    products: [
-        .library(name: sdkName, targets: [sdkName]),
-    ],
-    dependencies: [
-    ],
-    targets: [
-        .target(
-            name: sdkName
-        ),
-    ]
+  name: sdkName,
+  platforms: [
+    .iOS(.v14)
+  ],
+  products: [
+    .library(name: sdkName, targets: [sdkName]),
+  ],
+  dependencies: [
+  ],
+  targets: [
+    .target(
+      name: sdkName
+    ),
+  ]
 )
