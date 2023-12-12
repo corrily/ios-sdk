@@ -15,7 +15,10 @@ let package = Package(
   ],
   targets: [
     .target(
-      name: sdkName
+      name: sdkName,
+      resources: [
+        .process("Resources")
+      ]
     ),
   ]
 )
