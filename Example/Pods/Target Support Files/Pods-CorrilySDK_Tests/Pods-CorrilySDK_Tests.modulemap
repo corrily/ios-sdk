@@ -1,6 +1,0 @@
-framework module Pods_CorrilySDK_Tests {
-  umbrella header "Pods-CorrilySDK_Tests-umbrella.h"
-
-  export *
-  module * { export * }
-}

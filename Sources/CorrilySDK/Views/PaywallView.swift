@@ -54,13 +54,13 @@ public struct PaywallView: View {
               
               // Header
               if (showHeader) {
-                Text("Get Your Creative Juices Flowing")
+                Text(header)
                   .font(Font.largeTitle.weight(.bold))
                   .multilineTextAlignment(.center)
               }
               // Description
               if (showDescription) {
-                Text("Select a plan that fits your need. Free 7-day trial")
+                Text(description)
                   .font(Font.headline.weight(.regular))
                   .multilineTextAlignment(.center)
               }
