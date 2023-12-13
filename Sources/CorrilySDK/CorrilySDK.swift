@@ -84,3 +84,13 @@ public extension CorrilySDK {
     shared.dependencies.user.setUser(userId: userId, country: country)
   }
 }
+
+public extension CorrilySDK {
+  static func identifyUser(
+    userId: String? = nil,
+    country: String? = nil
+  ) async throws -> IdentifyResponse {
+    let dto = IdentifyDto(userId: userId, ip: shared.dependencies.user.deviceId, country: country)
+    return try await shared.dependencies.api.identifyUser(dto)
+  }
+}
