@@ -44,22 +44,25 @@ public class UserManager {
     return parts.joined(separator: ":")
   }
   
-  public func setUser(userId: String? = nil, country: String? = nil) {
+  public func setUser(userId: String? = nil, country: String? = nil, disableIdentificationRequest: Bool = false) {
     self.userId = userId
     if (country != nil) {
       self.country = country!
     }
     
-    Task.detached {
-      if (userId == nil) {
-        return
-      }
-      let dto = IdentifyDto(userId: userId!, ip: self.factory.user.deviceId)
-      do {
-        try await self.factory.api.setUserIdentify(dto)
-      } catch {
-        Logger.error("Cannot setUserIdentify for \(userId!) with \(self.factory.user.deviceId!)")
+    if (!disableIdentificationRequest) {
+      Task.detached {
+        if (userId == nil) {
+          return
+        }
+        let dto = IdentifyDto(userId: userId!, ip: self.factory.user.deviceId, country: country)
+        do {
+          try await self.factory.api.identifyUser(dto)
+        } catch {
+          Logger.error("Cannot setUserIdentify for \(userId!) with \(self.factory.user.deviceId!)")
+        }
       }
     }
   }
+  
 }
