@@ -48,9 +48,11 @@ extension Endpoint where Response == PaywallResponse {
   static func paywall(_ dto: PaywallDto) throws -> Self {
     let encoder = JSONEncoder.toSnakeCase
     do {
+      Logger.info("API request: POST /v1/paywall")
       let body = try encoder.encode(dto)
       return Endpoint(path: "/v1/paywall", method: .post, body: body)
     } catch {
+      Logger.error("API request: POST /v1/paywall failed!")
       throw error
     }
   }
@@ -60,9 +62,11 @@ extension Endpoint where Response == IdentifyResponse {
   static func identify(_ dto: IdentifyDto) throws -> Self {
     let encoder = JSONEncoder.toSnakeCase
     do {
+      Logger.info("API request: POST /v1/identify")
       let body = try encoder.encode(dto)
       return Endpoint(path: "/v1/identify", method: .post, body: body)
     } catch {
+      Logger.error("API request: POST /v1/identify failed!")
       throw error
     }
   }

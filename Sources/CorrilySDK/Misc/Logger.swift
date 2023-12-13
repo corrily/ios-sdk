@@ -36,7 +36,7 @@ struct Logger {
     #if DEBUG
     print("\(Date().isoString) \(level.prefix) \(message)")
     if let context = context {
-      print(" → \(context.description)")
+//      print(" → \(context.description)")
       if let trace = context.trace {
         dump(trace)
       }

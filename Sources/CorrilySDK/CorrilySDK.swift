@@ -31,6 +31,7 @@ final public class CorrilySDK {
   
   @discardableResult
   public static func start(apiKey: String) -> CorrilySDK {
+    Logger.info("Starting CorrilySDK")
     guard corrily == nil else {
       Logger.warn("Corrily.start called multiple times. Please make sure you only call this once on app launch.")
       return shared
@@ -58,6 +59,7 @@ public extension CorrilySDK {
 
 public extension CorrilySDK {
   static func setFallbackPaywall(with paywall: PaywallResponse) {
+    Logger.info("Setting Fallback Paywall")
     shared.dependencies.paywall.setFallbackPaywall(fallbackPaywall: paywall)
   }
 }
