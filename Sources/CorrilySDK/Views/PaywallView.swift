@@ -158,9 +158,7 @@ public struct PaywallView: View {
           }
           .frame(maxWidth: .infinity)
           .padding(16)
-          .padding(.bottom, 24)
-          
-        }.background(Color(hex: backgroundColor)).edgesIgnoringSafeArea(.bottom)
+        }.background(Color(hex: backgroundColor))
         
       }
     }
