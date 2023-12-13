@@ -18,7 +18,6 @@ struct Feature: Identifiable {
 
 struct CustomView: View {
   let factory: FactoryProtocol
-  let onSuccess: (() -> Void)
   @StateObject var paywallVM: PaywallViewModel
   @State var selectedProduct: Product? = nil
   
@@ -29,9 +28,8 @@ struct CustomView: View {
     Feature(id: "feat-4", name: "Connect with locals and find neaby trails")
   ]
   
-  init(factory: FactoryProtocol, onSuccess: @escaping (() -> Void)) {
+  init(factory: FactoryProtocol) {
     self.factory = factory
-    self.onSuccess = onSuccess
     _paywallVM = StateObject(wrappedValue: PaywallViewModel(factory: factory))
   }
   
@@ -99,7 +97,6 @@ struct CustomView: View {
               }
               Button(action: {
                 paywallVM.purchase(product: selectedProduct!)
-                onSuccess()
               }) {
                 Text("Start your Free trial")
                   .font(.title3)
