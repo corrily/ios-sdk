@@ -8,8 +8,8 @@
 import Foundation
 
 public struct IdentifyDto: Codable {
-  var userId: String
-  var ip: String
+  var userId: String?
+  var ip: String?
   var country: String?
 }
 

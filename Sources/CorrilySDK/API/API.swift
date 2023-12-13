@@ -55,8 +55,7 @@ public class API {
   }
   
   @discardableResult
-  public func setUserIdentify(_ dto: IdentifyDto) async throws -> IdentifyResponse {
-    Logger.info("Set User Identify for \(dto.userId) with \(dto.ip)")
+  public func identifyUser(_ dto: IdentifyDto) async throws -> IdentifyResponse {
     return try await request(endpoint: .identify(dto))
   }
 
