@@ -42,17 +42,28 @@ final public class CorrilySDK {
 }
 
 public extension CorrilySDK {
-  static func requestPaywall(userId: String? = nil, country: String, paywallId: Int? = nil) async throws -> PaywallResponse? {
-    let dto = PaywallDto(country: country, userId: userId, ip: shared.dependencies.user.deviceId, paywallId: paywallId)
+  static func requestPaywall(paywallId: Int? = nil) async throws -> PaywallResponse? {
+    let dto = PaywallDto(
+      country: shared.dependencies.user.country,
+      userId: shared.dependencies.user.userId,
+      ip: shared.dependencies.user.deviceId,
+      paywallId: paywallId
+    )
     return try await shared.dependencies.api.getPaywall(dto)
   }
 }
 
 public extension CorrilySDK {
-  static func renderPaywall(paywallId: Int? = nil, action: (() -> Void)? = nil, customView: ((_: FactoryProtocol) -> any View)? = nil) -> some View {
+  static func renderPaywall(
+    paywallId: Int? = nil,
+    action: (() -> Void)? = nil,
+    customView: ((_: FactoryProtocol) -> any View)? = nil
+  ) -> some View {
     if let customView = customView {
+      Logger.info("Rendering Paywall with CustomView")
       return AnyView(customView(shared.dependencies))
     }
+    Logger.info("Rendering Paywall with default template")
     return AnyView(PaywallView(factory: shared.dependencies, onSuccess: action))
   }
 }
@@ -65,7 +76,11 @@ public extension CorrilySDK {
 }
 
 public extension CorrilySDK {
-  static func setUser(userId: String? = nil, country: String? = nil) {
+  static func setUser(
+    userId: String? = nil,
+    country: String? = nil
+  ) {
+    Logger.info("Setting App User info")
     shared.dependencies.user.setUser(userId: userId, country: country)
   }
 }
