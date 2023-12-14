@@ -27,16 +27,21 @@ public struct PaywallView: View {
       Text("Can not fetch paywall with message:")
       Text(paywallVM.errorMessage ?? "Something went wrong!")
     } else {
+      let pricingPage = paywallVM.paywall?.pricingPage
       let (
+        headerImage,
         showHeader,
         header,
         showDescription,
-        description
+        description,
+        footerDescription
       ) = (
-        paywallVM.paywall?.pricingPage.showHeader ?? false,
-        paywallVM.paywall?.pricingPage.header ?? "Get Your Creative Juices Flowing",
-        paywallVM.paywall?.pricingPage.showProductDescription ?? false,
-        paywallVM.paywall?.pricingPage.description ?? "Select a plan that fits your need. Free 7-day trial"
+        pricingPage?.headerImage,
+        pricingPage?.showHeader ?? false,
+        pricingPage?.header ?? "Get Your Creative Juices Flowing",
+        pricingPage?.showProductDescription ?? false,
+        pricingPage?.description ?? "Select a plan that fits your need. Free 7-day trial",
+        pricingPage?.footerDescription
       )
       
       let products = billingType == Interval.month ? paywallVM.monthlyProducts : paywallVM.yearlyProducts
@@ -46,8 +51,8 @@ public struct PaywallView: View {
         buttonsColor,
         buttonsTextColor
       ) = (
-        paywallVM.paywall?.pricingPage.backgroundColor ?? "#ffffff",
-        paywallVM.paywall?.pricingPage.buttonsColor ?? "#ffff00",
+        pricingPage?.backgroundColor ?? "#ffffff",
+        pricingPage?.buttonsColor ?? "#ffff00",
         "#ffffff"
       )
       
@@ -55,7 +60,10 @@ public struct PaywallView: View {
         ScrollView {
           VStack(spacing: 24) {
             // Logo/Image
-            Image("logo", bundle: .module).resizable().aspectRatio(contentMode: .fill).frame(maxWidth: geo.size.width * 0.55)
+            if (headerImage != nil && headerImage!.isEmpty != true) {
+              RemoteImage(url: headerImage!)
+                .frame(maxWidth: geo.size.width * 0.55)
+            }
             
             // Header
             if (showHeader) {

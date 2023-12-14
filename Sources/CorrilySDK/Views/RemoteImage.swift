@@ -24,7 +24,7 @@ class ImageLoader: ObservableObject {
   
 }
 
-// FIXME: Should use AsyncImage if available
+@available(iOS, deprecated: 15.0, message: "Use the built-in AsyncImage instead")
 struct RemoteImage: View {
   @ObservedObject var imageLoader = ImageLoader()
   @State var image: UIImage = UIImage()
@@ -36,7 +36,7 @@ struct RemoteImage: View {
   var body: some View {
     Image(uiImage: image)
       .resizable()
-      .aspectRatio(contentMode: .fit)
+      .aspectRatio(contentMode: .fill)
       .onReceive(imageLoader.$image) { image in
         self.image = image
       }
