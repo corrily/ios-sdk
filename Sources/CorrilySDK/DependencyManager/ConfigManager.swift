@@ -12,7 +12,6 @@ public class ConfigManager {
   enum Channel {
     case production
     case staging
-    case develop
     
     var baseUrl: String {
       switch self {
@@ -20,8 +19,6 @@ public class ConfigManager {
         return "https://client.corrily.com"
       case .staging:
         return "https://staging.corrily.com/mainapi"
-      case .develop:
-        return "client.corrily.com"
       }
     }
   }
