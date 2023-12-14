@@ -25,7 +25,7 @@ public class ConfigManager {
       }
     }
   }
-  var channel: Channel = .staging
+  var channel: Channel = .production
   
   private (set) var apiKey: String = ""
   
