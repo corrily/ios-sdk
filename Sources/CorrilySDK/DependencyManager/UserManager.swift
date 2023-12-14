@@ -11,7 +11,7 @@ import StoreKit
 public class UserManager {
   private (set) var userId: String?
   private (set) var deviceId: String!
-  private (set) var country: String! = "XX"
+  private (set) var country: String!
   
   var factory: FactoryProtocol
   
@@ -36,6 +36,9 @@ public class UserManager {
     }
     if let countryCode = CountryCodeHelper().getCountryCode() {
       self.country = countryCode
+    } else {
+      Logger.warn("Using default countryCode: XX")
+      self.country = "XX"
     }
   }
   
@@ -63,7 +66,7 @@ public class UserManager {
         do {
           try await self.factory.api.identifyUser(dto)
         } catch {
-          Logger.error("Cannot setUserIdentify for \(userId!) with \(self.factory.user.deviceId!)")
+          Logger.error("Cannot setUserIdentify for \(userId!) with \(self.factory.user.deviceId!)", trace: error)
         }
       }
     }
