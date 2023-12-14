@@ -83,22 +83,22 @@ CorrilySDK.setUser(userId: "optional_user_id", disableIdentificationRequest: tru
 
 ### Fetching Products
 
-To fetch the content to display on your Paywall, including list of products, it's features and paywall design details, use the `requestPaywall` method.
-
-Based on country and other user attributes, Corrily will dynamically determine the Products and other to be displayed for a given user.
-Corrily Platform allows you to show different Prices, sets of Products, and different Paywalls for different users,
-and vary them depends on user's country, audience, or experiment arm.
-Ream more about [Paywalls Segmentation](https://docs.corrily.com/paywall-builder/configure#segmentation-rules-for-paywalls).
+To fetch the content to display on your Paywall, including list of Products, their features and paywall design details, use `requestPaywall` method.
 
 ```swift
-let responce = try await CorrilySDK.requestPaywall()
-print(responce!.products)
+let response = try await CorrilySDK.requestPaywall()
+print(response!.products)
 ```
 
-It's possible to explicitly provide `paywallId` to ignore segmentation rules:
+Based on country and other User attributes, Corrily will dynamically determine the Products and other details to be displayed for a given User.
+Corrily Platform allows you to show different Prices, sets of Products, and different Paywalls for a different Users,
+varying them based on User's country, audience, experiment arm or individual config specified on User's page in dashboard.
+
+Ream more about Paywalls Segmentation [in the docs](https://docs.corrily.com/paywall-builder/configure#segmentation-rules-for-paywalls).
+
+It's also possible to explicitly provide `paywallId` to ignore segmentation rules:
 ```swift
-let responce = try await CorrilySDK.requestPaywall(paywallId: 1234)
-print(responce!.products)
+let response = try await CorrilySDK.requestPaywall(paywallId: 1234)
 ```
 
 
