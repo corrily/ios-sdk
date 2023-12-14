@@ -56,7 +56,7 @@ To unlock the full potential of Corrily analytics, it's important to let Corrily
 
 To notify Corrily back-end about a new anonymous device_id, you should call:
 ```swift
-CorrilySDK.???
+CorrilySDK.identifyUser()
 ```
 
 The default behavior is the opposite for Users. `CorrilySDK.setUser` method [sends](https://docs.corrily.com/api-reference/set-user-characteristics) user information to the server under the hood. This is the correct behavior for most of the cases, but the developer has an option to disable [identification request](https://docs.corrily.com/api-reference/set-user-characteristics):
