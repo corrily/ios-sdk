@@ -47,7 +47,17 @@ Once user logs in, you shoud configure it in SDK to add `user_id` to every Paywa
 The setUser method allows you to add additional properties for your user. Moreover, it ensures that the user's prices are linked to their userId and persisted across sessions, even if they log out and re-login.
 
 ```swift
-CorrilySDK.setUser(userId: "optional_user_id", country: "US")
+CorrilySDK.setUser(userId: "optional_user_id")
+```
+
+### Determining User's country
+
+Both App Store and Corrily Platform supports country-based price localization. Therefore, each signed User or anonymous Device should be associated with a country.
+By default, Corrily SDK tries to fetch country from App Store, and use it to fetch Paywall from Corrily.
+
+It's also possible to explicitly set User's country by running:
+```swift
+CorrilySDK.setUser(userId: "my_user_id", country: "US")
 ```
 
 ### Tracking Conversion in Corrily Dashboard
@@ -59,9 +69,17 @@ To notify Corrily back-end about a new anonymous device_id, you should call:
 CorrilySDK.identifyUser()
 ```
 
+or
+
+```swift
+CorrilySDK.identifyUser(country: "US")
+```
+if you want to explicitly provide country code for anonymous device_id.
+
+
 The default behavior is the opposite for Users. `CorrilySDK.setUser` method [sends](https://docs.corrily.com/api-reference/set-user-characteristics) user information to the server under the hood. This is the correct behavior for most of the cases, but the developer has an option to disable [identification request](https://docs.corrily.com/api-reference/set-user-characteristics):
 ```swift
-CorrilySDK.setUser(userId: "optional_user_id", country: "US", disableIdentificationRequest: true)
+CorrilySDK.setUser(userId: "optional_user_id", disableIdentificationRequest: true)
 ```
 
 ### Paywall Rendering
