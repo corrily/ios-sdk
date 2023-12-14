@@ -81,7 +81,28 @@ The default behavior is the opposite for Users. `CorrilySDK.setUser` method [sen
 CorrilySDK.setUser(userId: "optional_user_id", disableIdentificationRequest: true)
 ```
 
-### Paywall Rendering
+### Fetching Products
+
+To fetch the content to display on your Paywall, including list of products, it's features and paywall design details, use the `requestPaywall` method.
+
+Based on country and other user attributes, Corrily will dynamically determine the Products and other to be displayed for a given user.
+Corrily Platform allows you to show different Prices, sets of Products, and different Paywalls for different users,
+and vary them depends on user's country, audience, or experiment arm.
+Ream more about [Paywalls Segmentation](https://docs.corrily.com/paywall-builder/configure#segmentation-rules-for-paywalls).
+
+```swift
+let responce = try await CorrilySDK.requestPaywall()
+print(responce!.products)
+```
+
+It's possible to explicitly provide `paywallId` to ignore segmentation rules:
+```swift
+let responce = try await CorrilySDK.requestPaywall(paywallId: 1234)
+print(responce!.products)
+```
+
+
+### Paywall Template Rendering
 <img src="https://github.com/corrily/ios-sdk/blob/main/docs/paywall_01.png?raw=true" alt="Corrily Paywall Template" style="max-height: 500px;">
 
 To display the default paywall template View, use the renderPaywall method:
@@ -91,11 +112,20 @@ CorrilySDK.renderPaywall()
 
 Based on country and other user attributes, Corrily will dynamically determine the Paywall to be displayed for a given user. Corrily Platform allows you to have multiple Paywalls and vary them depends on user's country, audience, or experiment arm. Ream more about [Paywalls Segmentation](https://docs.corrily.com/paywall-builder/configure#segmentation-rules-for-paywalls).
 
-It's possible to explicitly provide `paywallId` to ignore segmentation rules:
+It's possible to explicitly provide `paywallId` too:
 ```swift
 CorrilySDK.renderPaywall(paywallId: 1234)
 ```
 
+### Paywall Custom Component Rendering
+
+To render your own Paywall View, pass it to the renderPaywall method:
+```swift
+CorrilySDK.renderPaywall(customView: { factory in
+    CustomView(factory: factory)
+})
+```
+An example of the Custom Paywall View could be found [here](./Example/Corrily/Corrily/CustomView.swift).
 
 ### Setting a Fallback Paywall
 In scenarios where the SDK is unable to retrieve the paywall details from the API, having a fallback paywall ensures your users have uninterrupted access. Use the setFallbackPaywall method to set this up:
