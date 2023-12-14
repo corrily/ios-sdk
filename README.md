@@ -82,6 +82,8 @@ CorrilySDK.setUser(userId: "optional_user_id", disableIdentificationRequest: tru
 ```
 
 ### Paywall Rendering
+![Corrily Paywall Template](https://github.com//corrily/ios-sdk/blob/main/docs/paywall_01.png?raw=true)
+
 To display the default paywall template View, use the renderPaywall method:
 ```swift
 CorrilySDK.renderPaywall()

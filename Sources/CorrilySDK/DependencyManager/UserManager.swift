@@ -48,7 +48,7 @@ public class UserManager {
     return parts.joined(separator: ":")
   }
   
-  public func setUser(userId: String? = nil, country: String? = nil, disableIdentificationRequest: Bool = false) {
+public func setUser(userId: String? = nil, country: String? = nil, disableIdentificationRequest: Bool = false) {
     self.userId = userId
     if (country != nil) {
       self.country = country!
