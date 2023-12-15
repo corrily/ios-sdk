@@ -69,7 +69,7 @@ public struct PricingPage: Codable {
   public var channel: String
   public var showFeatureComparisonTable: Bool
   public var featureComparisonTableText: String
-  public var isDefault: Bool
+  public var isDefault: Bool?
   public var headerImage: String?
   public var footerDescription: String?
 }
