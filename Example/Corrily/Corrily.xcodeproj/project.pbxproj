@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		051369672B2B127C00114112 /* FallbackPaywallView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 051369662B2B127C00114112 /* FallbackPaywallView.swift */; };
 		058D68892B26F72500E4D969 /* CorrilyApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 058D68882B26F72500E4D969 /* CorrilyApp.swift */; };
 		058D688B2B26F72500E4D969 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 058D688A2B26F72500E4D969 /* ContentView.swift */; };
 		058D688D2B26F72600E4D969 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 058D688C2B26F72600E4D969 /* Assets.xcassets */; };
@@ -16,6 +17,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		051369662B2B127C00114112 /* FallbackPaywallView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FallbackPaywallView.swift; sourceTree = "<group>"; };
 		058D68852B26F72500E4D969 /* Corrily.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Corrily.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		058D68882B26F72500E4D969 /* CorrilyApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CorrilyApp.swift; sourceTree = "<group>"; };
 		058D688A2B26F72500E4D969 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -60,6 +62,7 @@
 				058D688C2B26F72600E4D969 /* Assets.xcassets */,
 				058D688E2B26F72600E4D969 /* Preview Content */,
 				05996DD82B2861B600BB1E68 /* CustomView.swift */,
+				051369662B2B127C00114112 /* FallbackPaywallView.swift */,
 			);
 			path = Corrily;
 			sourceTree = "<group>";
@@ -149,6 +152,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				05996DD92B2861B600BB1E68 /* CustomView.swift in Sources */,
+				051369672B2B127C00114112 /* FallbackPaywallView.swift in Sources */,
 				058D688B2B26F72500E4D969 /* ContentView.swift in Sources */,
 				058D68892B26F72500E4D969 /* CorrilyApp.swift in Sources */,
 			);

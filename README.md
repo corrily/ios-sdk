@@ -130,6 +130,6 @@ An example of the Custom Paywall View could be found [here](./Example/Corrily/Co
 ### Setting a Fallback Paywall
 In scenarios where the SDK is unable to retrieve the paywall details from the API, having a fallback paywall ensures your users have uninterrupted access. Use the setFallbackPaywall method to set this up:
 ```swift
-CorrilySDK.setFallbackPaywall(paywall: your_fallback_paywall_here)
+CorrilySDK.setFallbackPaywall(jsonString)
 ```
-The PaywallResponse object should match the expected format your application uses to render paywalls, ensuring consistency for your users.
+The `jsonString` should be a stringified version of the JSON response you get from `/v1/paywall` endpoint. An example of the Custom Paywall View could be found [here](./Example/Corrily/Corrily/FallbackPaywallView.swift).

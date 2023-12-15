@@ -16,8 +16,17 @@ public class PaywallManager {
     self.factory = factory
   }
   
-  public func setFallbackPaywall(fallbackPaywall: PaywallResponse) {
-    self.fallbackPaywall = fallbackPaywall
+  public func setFallbackPaywall(_ jsonString: String) {
+    let data = Data(jsonString.utf8)
+    let decoder = JSONDecoder.fromSnakeCase
+    
+    do {
+      let paywall = try decoder.decode(PaywallResponse.self, from: data)
+      Logger.info("Set fallback paywall")
+      self.fallbackPaywall = paywall
+    } catch {
+      Logger.error("Can not decode the fallback paywall")
+    }
   }
   
   public func prefetchPaywall() {

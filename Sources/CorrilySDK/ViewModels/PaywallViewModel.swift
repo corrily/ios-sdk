@@ -57,9 +57,13 @@ public class PaywallViewModel: ObservableObject {
       
     } catch {
       if let fallbackPaywall = factory.paywall.fallbackPaywall {
+        Logger.info("Can NOT get paywall from API. Using data from fallback.")
         paywall = fallbackPaywall
+        yearlyProducts = fallbackPaywall.products.filter { $0.interval == .year }
+        monthlyProducts = fallbackPaywall.products.filter { $0.interval == .month }
         isLoading = false
       } else {
+        Logger.error("Can NOT fetch paywall", trace: error)
         isError = true
         isLoading = false
       }

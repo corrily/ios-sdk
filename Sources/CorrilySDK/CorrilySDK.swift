@@ -69,9 +69,9 @@ public extension CorrilySDK {
 }
 
 public extension CorrilySDK {
-  static func setFallbackPaywall(with paywall: PaywallResponse) {
+  static func setFallbackPaywall(_ jsonString: String) {
     Logger.info("Setting Fallback Paywall")
-    shared.dependencies.paywall.setFallbackPaywall(fallbackPaywall: paywall)
+    shared.dependencies.paywall.setFallbackPaywall(jsonString)
   }
 }
 

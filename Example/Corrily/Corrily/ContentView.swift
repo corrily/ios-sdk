@@ -9,13 +9,12 @@ import SwiftUI
 import CorrilySDK
 
 struct ContentView: View {
+  
   var body: some View {
     TabView {
       DefaultTemplateView().tabItem {
-        VStack {
-          Image(systemName: "globe")
-          Text("Default Template")
-        }
+        Image(systemName: "globe")
+        Text("Default Template")
       }
       CustomTemplateView().tabItem {
         Image(systemName: "creditcard")
