@@ -11,7 +11,7 @@ public struct PaywallView: View {
   let factory: FactoryProtocol
   let onSuccess: (() -> Void)?
   @StateObject var paywallVM: PaywallViewModel
-  @State var billingType: Interval = Interval.month
+  @State private var billingType: Interval = Interval.year
   @State var selectedProduct: Product? = nil
   
   init(factory: FactoryProtocol, onSuccess: (() -> Void)? = nil) {
@@ -77,13 +77,8 @@ public struct PaywallView: View {
                 .font(Font.headline.weight(.regular))
                 .multilineTextAlignment(.center)
             }
-            Toggle(isOn: Binding(get: {
-              self.billingType == Interval.month
-            }, set: {
-              newValue in self.billingType = newValue ? Interval.month : Interval.year
-            }), label: {
-              Text("Monthly bill").frame(maxWidth: .infinity, alignment: .trailing)
-            })
+
+            BillingTypeToggle(leftLabel: "Billed Monthly", rightLabel: "Billed Yearly", value: $billingType).frame(maxWidth: .infinity, alignment: .trailing)
             
             // Render Products
             ForEach(products) { product in
