@@ -70,7 +70,8 @@ public struct PricingPage: Codable {
   public var showFeatureComparisonTable: Bool
   public var featureComparisonTableText: String
   public var isDefault: Bool
-  
+  public var headerImage: String?
+  public var footerDescription: String?
 }
 
 public struct PaywallResponse: Codable {
