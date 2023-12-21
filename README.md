@@ -133,3 +133,15 @@ In scenarios where the SDK is unable to retrieve the paywall details from the AP
 CorrilySDK.setFallbackPaywall(jsonString)
 ```
 The `jsonString` should be a stringified version of the JSON response you get from `/v1/paywall` endpoint. An example of the Custom Paywall View could be found [here](./Example/Corrily/Corrily/FallbackPaywallView.swift).
+
+### Purchase
+To initiate the purchase process, call the `purchase` method with the product `apiId`:
+```swift
+let result = await Purchase.shared.purchase("product_api_id_here")
+```
+Sometimes, users will need to restore their previous purchases, such as when moving to a new device. To accommodate this, use the restorePurchase method:
+```swift
+let restoreResult = await Purchase.shared.restorePurchase()
+```
+
+In custom view, the PaywallViewModal already expose 2 methods `.purchase("product_api_id")` and `.restorePurchase()`, direct calls to `Purchase` unnecessary in most scenarios. An example for Purchase could be found [here](./Example/Corrily/Corrily/ContentView.swift).
