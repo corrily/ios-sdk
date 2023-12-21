@@ -23,9 +23,6 @@ public struct PaywallView: View {
   public var body: some View {
     if (paywallVM.isLoading) {
       PaywallViewSkeleton()
-    } else if (paywallVM.isError) {
-      Text("Can not fetch paywall with message:")
-      Text(paywallVM.errorMessage ?? "Something went wrong!")
     } else {
       let pricingPage = paywallVM.paywall?.pricingPage
       let (
@@ -129,6 +126,9 @@ public struct PaywallView: View {
                 }
               }.buttonStyle(PlainButtonStyle())
             }
+            if (paywallVM.errorMessage != nil && paywallVM.errorMessage!.isEmpty != true) {
+              Text(paywallVM.errorMessage!).foregroundColor(Color.red)
+            }
             Button(action: {
               if (selectedProduct != nil ) {
                 Logger.info("Selected product with productId: \(selectedProduct!.id) and apiId \(selectedProduct!.apiId)")
@@ -150,7 +150,9 @@ public struct PaywallView: View {
                 )
             }.disabled(selectedProduct == nil)
             HStack {
-              Button(action: {}) {
+              Button(action: {
+                paywallVM.restorePurchase()
+              }) {
                 Text("Restore purchase").foregroundColor(Color(hex: "#000000")).font(.caption)
               }
               Text("|").foregroundColor(Color(hex: "#999999")).font(.caption)

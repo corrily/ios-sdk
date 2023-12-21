@@ -24,6 +24,7 @@
 		058D688C2B26F72600E4D969 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		058D688F2B26F72600E4D969 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		05996DD82B2861B600BB1E68 /* CustomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomView.swift; sourceTree = "<group>"; };
+		05F759972B33113500402948 /* CorrilyProducts.storekit */ = {isa = PBXFileReference; lastKnownFileType = text; path = CorrilyProducts.storekit; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,6 +63,7 @@
 				058D688C2B26F72600E4D969 /* Assets.xcassets */,
 				058D688E2B26F72600E4D969 /* Preview Content */,
 				05996DD82B2861B600BB1E68 /* CustomView.swift */,
+				05F759972B33113500402948 /* CorrilyProducts.storekit */,
 				051369662B2B127C00114112 /* FallbackPaywallView.swift */,
 			);
 			path = Corrily;

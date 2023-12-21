@@ -16,7 +16,9 @@ struct CorrilyApp: App {
   }
   var body: some Scene {
     WindowGroup {
-      ContentView()
+      ContentView().task {
+        await Purchase.shared.restorePurchase()
+      }
     }
   }
 }
