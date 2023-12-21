@@ -150,7 +150,9 @@ public struct PaywallView: View {
                 )
             }.disabled(selectedProduct == nil)
             HStack {
-              Button(action: {}) {
+              Button(action: {
+                paywallVM.restorePurchase()
+              }) {
                 Text("Restore purchase").foregroundColor(Color(hex: "#000000")).font(.caption)
               }
               Text("|").foregroundColor(Color(hex: "#999999")).font(.caption)

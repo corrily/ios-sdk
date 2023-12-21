@@ -39,6 +39,16 @@ public class PaywallViewModel: ObservableObject {
     }
   }
   
+  public func restorePurchase() {
+    Task {
+      do {
+        try await Purchase.shared.restorePurchase()
+      } catch {
+        Logger.error("Can not restore purchase")
+      }
+    }
+  }
+  
   func getPaywall(paywallId: Int? = nil) async {
     isError = false
     isLoading = true
