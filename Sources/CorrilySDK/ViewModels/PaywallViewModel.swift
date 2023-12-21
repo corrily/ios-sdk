@@ -27,8 +27,16 @@ public class PaywallViewModel: ObservableObject {
   }
 
   public func purchase(product: Product) {
-    Logger.info("Request purchase for product", trace: product)
-    Logger.warn("Not implemented yet!")
+    isError = false
+    errorMessage = nil
+    Task {
+      do {
+        try await Purchase.shared.purchase(product.apiId.replacingOccurrences(of: "+", with: ""))
+      } catch {
+        isError = true
+        errorMessage = error.localizedDescription
+      }
+    }
   }
   
   func getPaywall(paywallId: Int? = nil) async {

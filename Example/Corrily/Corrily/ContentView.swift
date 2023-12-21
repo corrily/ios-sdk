@@ -10,15 +10,21 @@ import CorrilySDK
 
 struct ContentView: View {
   
+  @ObservedObject var entitlements = EntitlementsManager.shared
+  
   var body: some View {
     TabView {
-      DefaultTemplateView().tabItem {
-        Image(systemName: "globe")
-        Text("Default Template")
-      }
-      CustomTemplateView().tabItem {
-        Image(systemName: "creditcard")
-        Text("Custom Template")
+      if (!entitlements.hasSubscription) {
+        DefaultTemplateView().tabItem {
+          Image(systemName: "globe")
+          Text("Default Template")
+        }
+        CustomTemplateView().tabItem {
+          Image(systemName: "creditcard")
+          Text("Custom Template")
+        }
+      } else {
+        ProContent()
       }
     }
   }
@@ -26,6 +32,12 @@ struct ContentView: View {
 
 #Preview {
   ContentView()
+}
+
+struct ProContent: View {
+  var body: some View {
+    Text("Pro content unlocked!")
+  }
 }
 
 struct DefaultTemplateView: View {
