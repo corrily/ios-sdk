@@ -10,6 +10,7 @@ import Foundation
 @MainActor
 public class PaywallViewModel: ObservableObject {
   let factory: FactoryProtocol
+  let onSuccess: (() -> Void)?
   
   @Published public private(set) var isLoading = true
   @Published public private(set) var isError = false
@@ -19,8 +20,9 @@ public class PaywallViewModel: ObservableObject {
   @Published public var yearlyProducts: [Product] = []
   @Published public var monthlyProducts: [Product] = []
   
-  public init(paywallId: Int? = nil, factory: FactoryProtocol) {
+  public init(paywallId: Int? = nil, onSuccess: (() -> Void)?, factory: FactoryProtocol) {
     self.factory = factory
+    self.onSuccess = onSuccess
     Task {
       await self.getPaywall(paywallId: paywallId)
     }
@@ -32,6 +34,9 @@ public class PaywallViewModel: ObservableObject {
     Task {
       do {
         try await Purchase.shared.purchase(product.apiId.replacingOccurrences(of: "+", with: ""))
+        if (onSuccess != nil) {
+          onSuccess!()
+        }
       } catch {
         isError = true
         errorMessage = error.localizedDescription

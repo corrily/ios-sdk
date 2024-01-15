@@ -9,15 +9,17 @@ import SwiftUI
 
 public struct PaywallView: View {
   let factory: FactoryProtocol
+  let paywallId: Int?
   let onSuccess: (() -> Void)?
   @StateObject var paywallVM: PaywallViewModel
   @State private var billingType: Interval = Interval.year
   @State var selectedProduct: Product? = nil
   
-  init(factory: FactoryProtocol, onSuccess: (() -> Void)? = nil) {
+  init(factory: FactoryProtocol, paywallId: Int? = nil, onSuccess: (() -> Void)? = nil) {
     self.factory = factory
+    self.paywallId = paywallId
     self.onSuccess = onSuccess
-    _paywallVM = StateObject(wrappedValue: PaywallViewModel(factory: factory))
+    _paywallVM = StateObject(wrappedValue: PaywallViewModel(paywallId: paywallId, onSuccess: onSuccess, factory: factory))
   }
   
   public var body: some View {
