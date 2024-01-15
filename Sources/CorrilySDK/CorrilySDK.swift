@@ -56,7 +56,7 @@ public extension CorrilySDK {
 public extension CorrilySDK {
   static func renderPaywall(
     paywallId: Int? = nil,
-    action: (() -> Void)? = nil,
+    onPurchaseSuccess: (() -> Void)? = nil,
     customView: ((_: FactoryProtocol) -> any View)? = nil
   ) -> some View {
     if let customView = customView {
@@ -64,7 +64,7 @@ public extension CorrilySDK {
       return AnyView(customView(shared.dependencies))
     }
     Logger.info("Rendering Paywall with default template")
-    return AnyView(PaywallView(factory: shared.dependencies, onSuccess: action))
+    return AnyView(PaywallView(factory: shared.dependencies, paywallId: paywallId, onSuccess: onPurchaseSuccess))
   }
 }
 
