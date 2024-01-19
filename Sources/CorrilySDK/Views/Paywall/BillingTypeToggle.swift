@@ -1,6 +1,6 @@
 //
 //  File.swift
-//  
+//
 //
 //  Created by Thành Trang on 15/12/2023.
 //
@@ -11,7 +11,7 @@ import SwiftUI
 struct BillingTypeToggle: View {
   let leftLabel: String
   let rightLabel: String
-  @State var color: Color = Color.blue
+  let color: Color = .accentColor
   
   @Binding var value: Interval
   var body: some View {
@@ -21,23 +21,23 @@ struct BillingTypeToggle: View {
       }
     }) {
       HStack {
-        Text(leftLabel).foregroundColor(value == Interval.month ? Color.primary : Color.gray).font(.caption)
+        Text(leftLabel).foregroundColor(value == Interval.month ? Color.primary : Color.secondary).font(.caption)
         Toggle("", isOn: Binding(get: {
           self.value == Interval.year
         }, set: {
           newValue in self.value = newValue ? Interval.year : Interval.month
         }))
-          .labelsHidden()
-          .toggleStyle(BillingToggleStyle(color: color))
-        Text(rightLabel).foregroundColor(value == Interval.year ? Color.primary : Color.gray).font(.caption)
+        .labelsHidden()
+        .toggleStyle(BillingToggleStyle(color: color))
+        Text(rightLabel).foregroundColor(value == Interval.year ? Color.primary : Color.secondary).font(.caption)
       }
-    }.buttonStyle(PlainButtonStyle())
+    }.buttonStyle(.plain)
   }
 }
 
 struct BillingToggleStyle: ToggleStyle {
   let color: Color
-  let thumbColor: Color = Color.white
+  let thumbColor: Color = .white
   func makeBody(configuration: Configuration) -> some View {
     HStack {
       RoundedRectangle(cornerRadius: 16)
