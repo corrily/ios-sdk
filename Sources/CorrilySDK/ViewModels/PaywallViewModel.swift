@@ -20,7 +20,7 @@ public class PaywallViewModel: ObservableObject {
   @Published public var yearlyProducts: [Product] = []
   @Published public var monthlyProducts: [Product] = []
   
-  public init(paywallId: Int? = nil, onSuccess: (() -> Void)?, factory: FactoryProtocol) {
+  public init(paywallId: Int? = nil, onSuccess: (() -> Void)? = nil, factory: FactoryProtocol) {
     self.factory = factory
     self.onSuccess = onSuccess
     Task {
